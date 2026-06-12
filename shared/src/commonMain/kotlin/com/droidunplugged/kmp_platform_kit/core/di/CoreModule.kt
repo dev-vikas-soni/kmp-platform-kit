@@ -37,7 +37,7 @@ import org.koin.dsl.module
  *     SDKInitializer.init(SDKCredentials(env, authToken = null, apiGuid = null))
  * }
  * startKoin {
- *     modules(coreModule(env), physicalInventoryModule)
+ *     modules(coreModule(env))
  * }
  * ```
  */
