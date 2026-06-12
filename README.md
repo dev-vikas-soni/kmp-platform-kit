@@ -49,8 +49,7 @@ shared/src/
 │   │   ├── error/             ← SdkError sealed hierarchy
 │   │   ├── interceptor/       ← SdkRequestInterceptor
 │   │   └── tracing/           ← SdkTraceContext
-│   ├── features/
-│   │   └── physicalinventory/ ← Example feature (models/repo/facade/di)
+│   ├── features/              ← Feature modules (models/repo/facade/di)
 │   └── shared/
 │       ├── models/            ← BaseApiResponse, PaginationInfo
 │       ├── concurrency/       ← JvmSynchronized (expect)
@@ -90,33 +89,32 @@ coroutineScope.launch {
 ```kotlin
 startKoin {
     modules(
-        coreModule(env),           // Core HTTP + resilience
-        physicalInventoryModule    // Feature module
+        coreModule(env)           // Core HTTP + resilience
     )
 }
 ```
 
-### 3. Consume from a ViewModel (Android)
+### 3. Consume from a ViewModel (Android Example)
 
 ```kotlin
-class InventoryViewModel(
-    private val facade: AppFacadePhysicalInventory
+class MyViewModel(
+    private val facade: MyFeatureFacade
 ) : ViewModel() {
 
-    val inventoryState = facade
-        .getInventoryList(PhysicalInventoryFilter(facilityCode = "FAC-01"))
+    val state = facade
+        .getData()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SDKState.Loading)
 }
 ```
 
-### 4. Consume from Swift (iOS via SKIE)
+### 4. Consume from Swift (iOS via SKIE Example)
 
 ```swift
-let facade = KoinApplication.shared.koin.get() as AppFacadePhysicalInventory
+let facade = KoinApplication.shared.koin.get() as MyFeatureFacade
 
-for await state in facade.getInventoryList(filter: .init(facilityCode: "FAC-01")) {
+for await state in facade.getData() {
     switch state {
-    case let success as SDKState.Success<InventoryListPayload>:
+    case let success as SDKState.Success<MyDataPayload>:
         render(success.data.items)
     case is SDKState.Loading:
         showLoader()
@@ -151,40 +149,6 @@ SDKInitializer.addInterceptor(object : SdkRequestInterceptor {
     }
 })
 ```
-
-### Telemetry
-
-```kotlin
-SDKInitializer.setTelemetry(object : SDKTelemetry {
-    override fun recordApiCall(endpoint: String, durationMs: Long, statusCode: Int, retries: Int) {
-        Firebase.analytics.logEvent("api_call") { param("endpoint", endpoint) }
-    }
-    override fun recordError(type: String, endpoint: String?, message: String) { /* … */ }
-    override fun recordSdkEvent(event: SDKEvent, detail: String?) { /* … */ }
-})
-```
-
-### SSL Pinning
-
-```kotlin
-val env = SdkEnvironment(
-    // …
-    sslPins = SslPinConfig(pins = listOf("sha256/AAAA…", "sha256/BBBB…"))
-)
-```
-
----
-
-## 🧩 Adding a New Feature
-
-1. **Create the package** under `features/<yourfeature>/`
-2. **Define models** with `@Serializable data class`
-3. **Define endpoints** as a `sealed class`
-4. **Implement the repository** — `interface` + `internal class Impl(apiClient: ApiClient)`
-5. **Write the facade** — `class AppFacadeYourFeature : BaseFacade()` returning `Flow<SDKState<T>>`
-6. **Register Koin** — `val yourFeatureModule = module { … }`
-
-That's it — the entire HTTP pipeline, caching, tracing, and circuit breaking is inherited automatically.
 
 ---
 

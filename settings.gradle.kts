@@ -23,4 +23,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "kmp-platform-kit"
-include(":app")
+include(":shared")
