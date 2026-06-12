@@ -1,14 +1,69 @@
+# --- Build & Output ---
+build/
+**/build/
 *.iml
-.gradle
-/local.properties
-/.idea/
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-*.hprof
-*.pyc
-gradle-app.setting
+.gradle/
+.kotlin/
+bin/
+gen/
+out/
+.externalNativeBuild/
+.cxx/
+
+# --- Artifacts ---
+*.apk
+*.aar
+*.jar
+*.bundle
+*.framework
+*.xcframework
+
+# --- IDE (IntelliJ / Android Studio) ---
+.idea/
+*.iws
+*.ipr
+*.atlassian
+/atlassian-ide-plugin.xml
 .navigation/
 captures/
+*.hprof
+
+# --- Local Configuration ---
+local.properties
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.lock-wscript
+
+# --- Credentials & Secrets ---
+*.jks
+*.keystore
+*.properties
+!gradle.properties
+
+# --- Logs & Databases ---
+*.log
+*.sqlite
+
+# --- Python & Scripts ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- iOS / macOS specific ---
+DerivedData/
+*.xcworkspace/
+*.xcuserdata/
+*.xccheckout
+*.xcscheme
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!iosApp/Contents.json
