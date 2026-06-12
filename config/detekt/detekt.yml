@@ -1,0 +1,51 @@
+build:
+  maxIssues: 10
+
+complexity:
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+  LongMethod:
+    active: true
+    threshold: 60
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 15
+    thresholdInClasses: 20
+
+style:
+  MagicNumber:
+    active: true
+    ignoreNumbers: ['-1', '0', '1', '2', '100']
+  MaxLineLength:
+    active: true
+    maxLineLength: 120
+  ReturnCount:
+    active: true
+    max: 4
+  WildcardImport:
+    active: true
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: true
+  SwallowedException:
+    active: true
+
+potential-bugs:
+  UnsafeCast:
+    active: true
+
+performance:
+  SpreadOperator:
+    active: true
+
+# Disabled KMP specific rules
+naming:
+  MatchingDeclarationName:
+    active: false
+  InvalidPackageDeclaration:
+    active: false
