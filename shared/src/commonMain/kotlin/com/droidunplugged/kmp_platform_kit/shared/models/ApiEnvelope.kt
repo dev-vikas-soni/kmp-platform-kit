@@ -3,7 +3,7 @@ package com.droidunplugged.kmp_platform_kit.shared.models
 import kotlinx.serialization.Serializable
 
 /**
- * Standard API response envelope used by all Cardinal Health APIs.
+ * Standard API response envelope shared by all SDK endpoints.
  *
  * Every API returns:
  * ```json
