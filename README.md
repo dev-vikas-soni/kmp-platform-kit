@@ -1,208 +1,111 @@
-# KMP Platform Kit
+# 🛡️ KMP Platform Kit
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.2-blueviolet?logo=kotlin)](https://kotlinlang.org)
 [![KMP](https://img.shields.io/badge/Multiplatform-Android%20%7C%20iOS-green)](https://www.jetbrains.com/kotlin-multiplatform/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue)](LICENSE)
-[![Build](https://img.shields.io/badge/build-passing-brightgreen)]()
 
-A production-grade **Kotlin Multiplatform SDK framework** for Android and iOS that provides a battle-tested networking, resilience, and observability foundation — so you can focus on building features, not infrastructure.
+**KMP Platform Kit** is a production-grade Kotlin Multiplatform (KMP) SDK framework. It provides the "boring but critical" infrastructure — networking, resilience, security, and observability — so you can focus on building features, not plumbing.
+
+Built for the real world, it solves common SDK challenges like **401 coalescing**, **request deduplication**, **circuit breaking**, and **binary compatibility**.
 
 ---
 
-## ✨ Features
+## 📖 Documentation
+
+*   [**Architecture**](./docs/architecture.md) — Layer design, DI isolation, and thread safety.
+*   [**Android Integration**](./docs/integration-android.md) — Step-by-step guide for Android apps.
+*   [**iOS Integration**](./docs/integration-ios.md) — Swift-friendly patterns using SKIE.
+*   [**Technical Concepts**](./docs/technical-concepts.md) — Deep-dive into the "Why" and "How".
+*   [**Unit Testing**](./docs/unit-testing.md) — Using our built-in test toolkit.
+
+---
+
+## ✨ Key Features
 
 | Capability | Details |
-|---|---|
-| 🌐 **Typed HTTP Client** | Ktor-based `ApiClient` with sealed `ApiResult<T>` returns |
-| 🧠 **Smart Caching** | `NETWORK_FIRST`, `CACHE_FIRST`, and `NO_CACHE` policies |
-| 🔁 **Request Deduplication** | Coalesces in-flight identical requests via `Mutex + CompletableDeferred` |
-| ⚡ **Circuit Breaker** | `CLOSED → OPEN → HALF_OPEN` state machine to fast-fail on server outages |
-| 🔐 **Auth / Token Manager** | 401-coalescing refresh with pluggable `TokenRefreshProvider` |
-| 📄 **Pagination** | Generic `SdkPager` with `StateFlow`-backed page state |
-| 🔭 **Tracing** | Automatic `traceparent` + `x-b3-*` header injection per request |
-| 🪵 **Structured Logging** | `PlatformLogger` bridges to `android.util.Log` on Android, no-op on iOS |
-| 💉 **Dependency Injection** | Koin-backed `coreModule` + per-feature modules |
-| 📡 **Telemetry** | Pluggable `SDKTelemetry` interface with a no-op default |
+|:---|:---|
+| 🌐 **Typed Networking** | Ktor-based `ApiClient` with sealed `ApiResult<T>` and `SdkError`. |
+| 🧠 **Resilience** | Built-in **Circuit Breaker**, **Request Deduplicator**, and **Smart Caching**. |
+| 🔐 **Auth Lifecycle** | Automatic token refresh (proactive & reactive) with 401 coalescing. |
+| 📄 **Pagination** | Generic `SdkPager` with `StateFlow`-backed page state. |
+| 🔭 **Observability** | Automatic W3C/B3 tracing and pluggable `SDKTelemetry`. |
+| 💉 **DI Isolation** | Isolated Koin instance to prevent host-app dependency conflicts. |
+| 🍏 **Swift First** | Optimized for iOS via **SKIE** (Flow → AsyncSequence, Enums). |
 
 ---
 
 ## 🏗 Architecture
 
-The SDK is organized in 5 clean layers:
-
-```
-┌──────────────────────────────────────────────┐
-│  Layer 5 │  AppFacade         (public API)    │
-│  Layer 4 │  Repository        (data access)   │
-│  Layer 3 │  Core Subsystems   (resilience)    │
-│  Layer 2 │  Platform Specifics (expect/actual)│
-│  Layer 1 │  Models & State    (data types)    │
-└──────────────────────────────────────────────┘
-```
+The SDK follows a strict 5-layer architecture to ensure testability and isolation:
 
 ```
 shared/src/
-├── commonMain/kotlin/com/droidunplugged/kmp_platform_kit/
-│   ├── core/                  ← ApiClient, KtorApiClient, CircuitBreaker, …
-│   │   ├── config/            ← SdkEnvironment, SslPinConfig, RetryConfig
-│   │   ├── di/                ← coreModule (Koin)
-│   │   ├── error/             ← SdkError sealed hierarchy
-│   │   ├── interceptor/       ← SdkRequestInterceptor
-│   │   └── tracing/           ← SdkTraceContext
-│   ├── features/              ← Feature modules (models/repo/facade/di)
-│   └── shared/
-│       ├── models/            ← BaseApiResponse, PaginationInfo
-│       ├── concurrency/       ← JvmSynchronized (expect)
-│       └── utils/             ← PlatformLogger (expect), HttpHeaders
-├── androidMain/               ← OkHttp engine, ConcurrentHashMap, Log
-└── iosMain/                   ← Darwin engine, AtomicReference, no-op log
+├── commonMain/
+│   ├── core/           ← Resilience, Auth, Paging, DI, Tracing
+│   ├── features/       ← Your feature modules go here
+│   └── shared/         ← Models, Utils, Extensions
+├── androidMain/        ← OkHttp engine, Android Context integration
+└── iosMain/            ← Darwin engine, Atomic thread-safety logic
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Initialize the SDK
-
+### 1. Initialize (Android Example)
 ```kotlin
-// In Application.onCreate() or iOS AppDelegate
 val env = SdkEnvironment(
-    id        = "prod",
-    baseUrl   = "https://api.example.com",
-    clientId  = "your-client-id",
-    apiKey    = BuildConfig.API_KEY
+    id = "prod",
+    baseUrl = "https://api.example.com",
+    clientId = "client-id",
+    apiKey = "api-key"
 )
 
-coroutineScope.launch {
-    SDKInitializer.init(
-        SDKCredentials(
-            environment = env,
-            authToken   = null,   // or pass a JWT
-            apiGuid     = null
-        )
-    )
-}
+// One-time initialization
+SDKInitializer.init(
+    SDKCredentials(environment = env, authToken = "jwt", apiGuid = "guid")
+)
 ```
 
-### 2. Set up Koin
-
+### 2. Consume in UI (Compose)
 ```kotlin
-startKoin {
-    modules(
-        coreModule(env)           // Core HTTP + resilience
-    )
-}
-```
+val state by viewModel.sdkStateFlow.collectAsState()
 
-### 3. Consume from a ViewModel (Android Example)
-
-```kotlin
-class MyViewModel(
-    private val facade: MyFeatureFacade
-) : ViewModel() {
-
-    val state = facade
-        .getData()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SDKState.Loading)
-}
-```
-
-### 4. Consume from Swift (iOS via SKIE Example)
-
-```swift
-let facade = KoinApplication.shared.koin.get() as MyFeatureFacade
-
-for await state in facade.getData() {
-    switch state {
-    case let success as SDKState.Success<MyDataPayload>:
-        render(success.data.items)
-    case is SDKState.Loading:
-        showLoader()
-    default:
-        break
-    }
+when (state) {
+    is SDKState.Loading -> ShowSpinner()
+    is SDKState.Success -> RenderData(state.data)
+    is SDKState.Error -> HandleError(state.message)
 }
 ```
 
 ---
 
-## 🔌 Optional Configuration
+## 🧪 Quality Gates
 
-### Token Refresh (OAuth / JWT)
-
-```kotlin
-SDKInitializer.setTokenRefreshProvider {
-    // Call your auth service and return a new token
-    authService.refreshToken()
-}
-```
-
-### Custom Interceptors
-
-```kotlin
-SDKInitializer.addInterceptor(object : SdkRequestInterceptor {
-    override suspend fun onRequest(request: HttpRequestBuilder) = request.apply {
-        header("X-App-Version", BuildConfig.VERSION_NAME)
-    }
-    override suspend fun onResponse(response: HttpResponse, durationMs: Long) {
-        analytics.trackApiCall(response.request.url.toString(), durationMs)
-    }
-})
-```
-
----
-
-## 🧪 Testing
-
-```bash
-# JVM unit tests
-./gradlew :shared:testDebugUnitTest
-
-# iOS unit tests (requires Xcode + Simulator)
-./gradlew :shared:iosSimulatorArm64Test
-
-# Android integration build
-./gradlew :shared:assembleDebug
-
-# iOS framework
-./gradlew :shared:linkDebugFrameworkIosSimulatorArm64
-```
-
----
-
-## 📦 Dependencies
-
-| Library | Version | Purpose |
-|---|---|---|
-| Ktor Client | 3.1.3 | HTTP engine (OkHttp / Darwin) |
-| kotlinx.coroutines | 1.10.2 | Async + Flow |
-| kotlinx.serialization | 1.8.1 | JSON parsing |
-| kotlinx.datetime | 0.6.1 | Platform-agnostic timestamps |
-| Koin | 4.1.0 | Dependency injection |
-| SKIE | 0.10.10 | Swift-friendly coroutine/Flow bridging |
-| uuid (benasher44) | 0.8.4 | Trace IDs |
+We don't just write code; we enforce quality:
+*   **Detekt**: Static analysis for code smells.
+*   **Kover**: Mandatory 80% line coverage.
+*   **BCV**: Public API compatibility validation.
+*   **OWASP**: Automated dependency vulnerability scanning.
 
 ---
 
 ## 🤝 Contributing
 
-Pull requests are welcome! Please open an issue first to discuss what you'd like to change.
+Contributions are what make the open-source community an amazing place to learn, inspire, and create.
 
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feature/my-feature`)
-3. Commit your changes
-4. Open a PR against `main`
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-```
-Copyright 2024 KMP Platform Kit Contributors
+Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+---
 
-    http://www.apache.org/licenses/LICENSE-2.0
-```
+**Built with ❤️ for the BlrKotlin Conference.**
