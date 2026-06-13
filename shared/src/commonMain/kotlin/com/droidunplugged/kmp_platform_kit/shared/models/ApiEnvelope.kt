@@ -3,42 +3,50 @@ package com.droidunplugged.kmp_platform_kit.shared.models
 import kotlinx.serialization.Serializable
 
 /**
- * Standard API response envelope shared by all SDK endpoints.
+ * Standard API response envelope used by all Cardinal Health APIs.
  *
- * Designed as an **abstract** class so feature-level response types can
- * subclass it and provide a concrete, strongly-typed [data] field:
- *
- * ```kotlin
- * @Serializable
- * data class InventoryListResponse(
- *     @SerialName("data") override val data: InventoryListPayload? = null
- * ) : BaseApiResponse<InventoryListPayload>()
+ * Every API returns:
+ * ```json
+ * { "status": "SUCCESS|ERROR", "error": { ... } | null, "data": { ... } | null }
  * ```
  *
- * Fields common to every API response:
- * @property status   "SUCCESS" | "ERROR" – set by the server.
- * @property error    Present when [status] is "ERROR".
- * @property data     Typed payload; null on error responses.
+ * Feature-specific response DTOs should embed this envelope or reuse
+ * [ErrorInfo] and [ErrorDetail] directly.
+ *
+ * @see ErrorInfo
+ * @see ErrorDetail
  */
 @Serializable
-abstract class BaseApiResponse<T> {
-    abstract val data: T?
-    open val status: String = ""
-    open val error: ErrorInfo? = null
+data class BaseApiResponse(
+    val status: String = "",
+    val error: ErrorInfo? = null
+) {
+    /** `true` when the API returned a success status. */
+    val isSuccess: Boolean get() = status.uppercase() == "SUCCESS"
 
-    val isSuccess: Boolean get() = status.equals("SUCCESS", ignoreCase = true)
-    val errorMessage: String? get() = error?.errorDetails?.firstOrNull()?.message
+    /** First error message from the error details list, or `null`. */
+    val errorMessage: String?
+        get() = error?.errorDetails?.firstOrNull()?.message
 }
 
-// ─── Error envelope types ──────────────────────────────────────────────────────
-
+/**
+ * Error information block within the standard API envelope.
+ *
+ * Shared across all features - defined once, reused everywhere.
+ */
 @Serializable
 data class ErrorInfo(
     val errorDetails: List<ErrorDetail> = emptyList()
 )
 
+/**
+ * Individual error detail within an [ErrorInfo] block.
+ *
+ * @property code    API error code (e.g. `"EX_402_115"`).
+ * @property message Human-readable error description.
+ */
 @Serializable
 data class ErrorDetail(
-    val code: String,
-    val message: String
+    val code: String = "",
+    val message: String = ""
 )

@@ -1,25 +1,43 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.multiplatform) apply false
-    alias(libs.plugins.kotlin.serialization) apply false
-    alias(libs.plugins.skie) apply false
+    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
+    alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.detekt)
-    alias(libs.plugins.kover) apply false
-    alias(libs.plugins.bcv)
-    alias(libs.plugins.owasp)
-    alias(libs.plugins.dokka) apply false
+    id("org.owasp.dependencycheck") version "12.2.0"
+    // Binary-compatibility validator: applied to :shared where the library code lives.
+    // Declared here so Gradle resolves the plugin JAR for the whole build.
+    // Run: ./gradlew :shared:apiDump   (update .api files after intentional API changes)
+    //      ./gradlew :shared:apiCheck  (validate - wired into CI)
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.18.1" apply false
 }
 
-// Global configuration for Detekt and OWASP as per docs
+// Apply detekt to root project for project-wide analysis
 detekt {
+    config.setFrom(files("${rootDir}/config/detekt/detekt.yml"))
     buildUponDefaultConfig = true
     allRules = false
-    config.setFrom(file("$rootDir/config/detekt/detekt.yml"))
+    parallel = true
+    source.setFrom(
+        files(
+            "shared/src/commonMain/kotlin",
+            "shared/src/androidMain/kotlin",
+            "shared/src/iosMain/kotlin"
+        )
+    )
 }
 
+// ── OWASP Dependency-Check ────────────────────────────────────────────────────
+// Scans all Gradle dependencies for known CVEs via the NVD database.
+// Fails the build on any finding with CVSS score >= 7.0 (HIGH or CRITICAL).
+// Suppress false positives in config/owasp/suppression.xml with documented justification.
+//
+// Run manually: ./gradlew dependencyCheckAnalyze
+// CI gate:      .github/workflows/security.yml
 dependencyCheck {
-    failBuildOnCVSS = 7.0f
-    suppressionFile = "$rootDir/config/owasp/suppression.xml"
-    scanConfigurations = listOf("releaseRuntimeClasspath")
+    failBuildOnCVSS = 7f
+    formats = listOf("HTML", "JSON", "SARIF")
+    suppressionFile = "${rootDir}/config/owasp/suppression.xml"
+    nvd {
+        apiKey = System.getenv("NVD_API_KEY") ?: ""
+    }
+    skipConfigurations = listOf("testImplementation", "androidTestImplementation")
 }

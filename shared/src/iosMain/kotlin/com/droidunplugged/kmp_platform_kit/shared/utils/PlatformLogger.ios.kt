@@ -1,10 +1,19 @@
 package com.droidunplugged.kmp_platform_kit.shared.utils
 
-actual object PlatformLogger {
-    actual var logger: Logger = NoOpLogger // Fallback for iOS, can be wired to os_log if needed
+import kotlin.concurrent.Volatile
 
-    actual fun d(tag: String, message: String) = logger.d(tag, message)
-    actual fun i(tag: String, message: String) = logger.i(tag, message)
-    actual fun w(tag: String, message: String) = logger.w(tag, message)
-    actual fun e(tag: String, message: String, throwable: Throwable?) = logger.e(tag, message, throwable)
+/**
+ * iOS actual for PlatformLogger expect in commonMain.
+ * Host app can call PlatformLogger.set(...) to provide a real logger implementation.
+ * Uses @Volatile for thread safety in Kotlin/Native. Assignment is atomic and visibility is ensured for object references.
+ */
+actual object PlatformLogger {
+    @Volatile
+    private var logger: Logger = NoOpLogger
+
+    actual fun set(logger: Logger) {
+        this.logger = logger
+    }
+
+    actual fun get(): Logger = logger
 }

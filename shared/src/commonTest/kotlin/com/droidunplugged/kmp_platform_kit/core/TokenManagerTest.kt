@@ -1,5 +1,6 @@
 package com.droidunplugged.kmp_platform_kit.core
 
+import com.droidunplugged.kmp_platform_kit.core.auth.TokenManager
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -7,10 +8,10 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
 /**
- * Tests for [TokenManager].
+ * Tests for [com.droidunplugged.kmp_platform_kit.core.auth.TokenManager].
  *
  * We use a fake [PlatformConfig] by toggling actual header state since
- * [PlatformConfig] is the underlying store that [TokenManager] reads from.
+ * [PlatformConfig] is the underlying store that [com.droidunplugged.kmp_platform_kit.core.auth.TokenManager] reads from.
  */
 class TokenManagerTest {
 
@@ -40,7 +41,7 @@ class TokenManagerTest {
     @Test
     fun `getValidToken invokes refresh provider when no token is present`() = runTest {
         var providerCalled = false
-        val provider = TokenRefreshProvider {
+        val provider = com.droidunplugged.kmp_platform_kit.core.auth.TokenRefreshProvider {
             providerCalled = true
             "refreshed-token"
         }
