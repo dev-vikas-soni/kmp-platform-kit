@@ -13,7 +13,7 @@ import org.koin.dsl.module
  *
  * Centralised here (single source of truth) to avoid magic strings.
  */
-internal const val BASE_URL_QUALIFIER = "vantus_sdk_baseUrl"
+internal const val BASE_URL_QUALIFIER = "kmp_platform_kit_baseUrl"
 
 /**
  * Core Koin module - provides networking dependencies.

@@ -1,7 +1,7 @@
 package com.droidunplugged.kmp_platform_kit.core.error
 
 /**
- * Structured error taxonomy for the Vantus SDK.
+ * Structured error taxonomy for the KMP Platform Kit.
  *
  * Replaces the flat `ApiResult.Failure(code: Int, message: String?)` with a
  * sealed hierarchy that gives host apps machine-readable error categories and

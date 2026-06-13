@@ -1,4 +1,4 @@
-# Detekt configuration for Vantus SDK
+# Detekt configuration for KMP Platform Kit
 # Run: ./gradlew detekt
 
 build:

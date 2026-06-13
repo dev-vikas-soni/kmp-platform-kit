@@ -1,4 +1,4 @@
-package com.cardinalhealth.vantus.sdk.core.auth
+package com.droidunplugged.kmp_platform_kit.core.auth
 
 import com.droidunplugged.kmp_platform_kit.shared.utils.PlatformLogger
 import kotlinx.coroutines.CoroutineScope
@@ -51,7 +51,7 @@ sealed class TokenResult {
 /**
  * Contract the host app implements to provide token refresh capability to the SDK.
  *
- * Register via [com.cardinalhealth.vantus.sdk.core.SDKInitializer.setTokenRefreshProvider].
+ * Register via [com.droidunplugged.kmp_platform_kit.core.SDKInitializer.setTokenRefreshProvider].
  *
  * ## Android example
  * ```kotlin

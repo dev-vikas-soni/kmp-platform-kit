@@ -37,7 +37,7 @@ import kotlin.time.Duration.Companion.minutes
  * @property retryConfig         Override default [RetryConfig] at runtime.
  * @property cacheMaxAge         Override default cache TTL at runtime.
  * @property maintenanceMessage  If non-null, the SDK emits this via telemetry and facades
- *                               return [com.cardinalhealth.vantus.sdk.core.error.SdkError.ServerError]
+ *                               return [com.droidunplugged.kmp_platform_kit.core.error.SdkError.ServerError]
  *                               with this message until it is cleared.
  * @property refreshInterval     How often the SDK re-fetches this config. `null` = once on init.
  */

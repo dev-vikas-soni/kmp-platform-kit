@@ -122,7 +122,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.cardinalhealth.vantus.sdk"
+    namespace = "com.droidunplugged.kmp_platform_kit"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -138,13 +138,12 @@ android {
 apiValidation {
     ignoredPackages.addAll(
         listOf(
-            "com.cardinalhealth.vantus.sdk.core.di",
-            "com.cardinalhealth.vantus.sdk.features.physicalinventory.di",
+            "com.droidunplugged.kmp_platform_kit.core.di",
         )
     )
     ignoredClasses.addAll(
         listOf(
-            "com.cardinalhealth.vantus.sdk.core.SDKInfo",
+            "com.droidunplugged.kmp_platform_kit.core.SDKInfo",
         )
     )
     klib {
@@ -198,7 +197,7 @@ val generateSDKInfo by tasks.registering {
             ?: "0.0.1-SNAPSHOT"
         val code = """
             |// AUTO-GENERATED - do not edit. Version is controlled by versioning.gradle.kts.
-            |package com.cardinalhealth.vantus.sdk.core
+            |package com.droidunplugged.kmp_platform_kit.core
             |
             |/**
             | * Runtime-accessible SDK metadata.
@@ -206,26 +205,26 @@ val generateSDKInfo by tasks.registering {
             | * Host apps and crash reporters can query:
             | * ```kotlin
             | * val version = SDKInfo.VERSION      // e.g. "1.0.0"
-            | * val name    = SDKInfo.NAME         // "VantusSDK"
-            | * val full    = SDKInfo.fullName     // "VantusSDK/1.0.0"
+            | * val name    = SDKInfo.NAME         // "KmpPlatformKit"
+            | * val full    = SDKInfo.fullName     // "KmpPlatformKit/1.0.0"
             | * ```
             | *
             | * Version is injected at build time - always matches the published artifact.
             | */
             |object SDKInfo {
             |    /** SDK display name. */
-            |    const val NAME = "VantusSDK"
+            |    const val NAME = "KmpPlatformKit"
             |
             |    /** SDK version string (SemVer) - auto-synced with build version. */
             |    const val VERSION = "$resolvedVersion"
             |
-            |    /** Combined name/version, e.g. `"VantusSDK/1.0.0"`. */
+            |    /** Combined name/version, e.g. `"KmpPlatformKit/1.0.0"`. */
             |    val fullName: String get() = "${'$'}NAME/${'$'}VERSION"
             |}
         """.trimMargin()
 
         val outFile = generatedDir.get().asFile.resolve(
-            "com/cardinalhealth/vantus/sdk/core/SDKInfo.kt"
+            "com/droidunplugged/kmp_platform_kit/core/SDKInfo.kt"
         )
         outFile.parentFile.mkdirs()
         outFile.writeText(code)
@@ -239,7 +238,7 @@ val generateFeatureModules by tasks.registering {
 
     doLast {
         val imports = enabledFeatures.joinToString("\n") { feat ->
-            "import com.cardinalhealth.vantus.sdk.features.$feat.di.${feat}Module"
+            "import com.droidunplugged.kmp_platform_kit.features.$feat.di.${feat}Module"
         }
         val listEntries = enabledFeatures.joinToString(",\n        ") { feat ->
             "${feat}Module"
@@ -247,7 +246,7 @@ val generateFeatureModules by tasks.registering {
 
         val code = """
             |// AUTO-GENERATED - do not edit. Controlled by sdk.features property.
-            |package com.cardinalhealth.vantus.sdk.core.di
+            |package com.droidunplugged.kmp_platform_kit.core.di
             |
             |$imports
             |import org.koin.core.module.Module
@@ -267,7 +266,7 @@ val generateFeatureModules by tasks.registering {
         """.trimMargin()
 
         val outFile = generatedDir.get().asFile.resolve(
-            "com/cardinalhealth/vantus/sdk/core/di/FeatureModules.kt"
+            "com/droidunplugged/kmp_platform_kit/core/di/FeatureModules.kt"
         )
         outFile.parentFile.mkdirs()
         outFile.writeText(code)
@@ -294,7 +293,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*>>().con
 // Output: shared/build/docs/html/index.html
 //         shared/build/docs/gfm/
 // ---------------------------------------------------------------------------
-val docsRepoBaseUrl = "https://github.com/cardinal-health/digital-mobile-lab-vantus-kmp/blob/main"
+val docsRepoBaseUrl = "https://github.com/dev-vikas-soni/kmp-platform-kit/blob/main"
 val sdkVersionForDocs = providers.provider {
     (rootProject.extra.properties["sdkVersion"] as? String)
         ?: project.version.toString().takeIf { it != "unspecified" }
@@ -304,7 +303,7 @@ val sdkVersionForDocs = providers.provider {
 tasks.withType<DokkaTask>().configureEach {
     dependsOn(generateFeatureModules, generateSDKInfo)
 
-    moduleName.set("VantusSDK")
+    moduleName.set("KmpPlatformKit")
     moduleVersion.set(sdkVersionForDocs)
     failOnWarning.set(false)
     suppressObviousFunctions.set(true)
@@ -339,11 +338,11 @@ tasks.withType<DokkaTask>().configureEach {
         }
 
         perPackageOption {
-            matchingRegex.set("com\\.cardinalhealth\\.vantus\\.sdk\\..*\\.di(\\..*)?")
+            matchingRegex.set("com\\.droidunplugged\\.kmp_platform_kit\\..*\\.di(\\..*)?")
             suppress.set(true)
         }
         perPackageOption {
-            matchingRegex.set("com\\.cardinalhealth\\.vantus\\.sdk\\.core\\.di(\\..*)?")
+            matchingRegex.set("com\\.droidunplugged\\.kmp_platform_kit\\.core\\.di(\\..*)?")
             suppress.set(true)
         }
     }
@@ -389,8 +388,8 @@ kover {
                 // Exclude platform-specific actual implementations (tested indirectly
                 // via iosSimulatorArm64Test / Android instrumented tests, not commonTest)
                 packages(
-                    "com.cardinalhealth.vantus.sdk.android",
-                    "com.cardinalhealth.vantus.sdk.ios",
+                    "com.droidunplugged.kmp_platform_kit.android",
+                    "com.droidunplugged.kmp_platform_kit.ios",
                 )
                 // Exclude platform `actual` functions compiled into the core package.
                 // These require a real HTTP engine or Android Context - not testable in

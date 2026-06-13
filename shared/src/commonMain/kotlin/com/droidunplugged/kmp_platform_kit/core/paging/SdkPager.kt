@@ -87,7 +87,7 @@ sealed class PagerState<out T> {
 // ── Pager ─────────────────────────────────────────────────────────────────────
 
 /**
- * Multiplatform, coroutine-based pagination engine for the Vantus SDK.
+ * Multiplatform, coroutine-based pagination engine for the KMP Platform Kit.
  *
  * Supports:
  * - **Offset pagination** - `loadNextPage()` increments `currentPage` automatically.

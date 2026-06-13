@@ -1,9 +1,9 @@
 package com.droidunplugged.kmp_platform_kit.core
 
-import com.cardinalhealth.vantus.sdk.core.SDKInfo
-import com.cardinalhealth.vantus.sdk.core.auth.TokenManager
-import com.cardinalhealth.vantus.sdk.core.auth.TokenRefreshProvider
-import com.cardinalhealth.vantus.sdk.core.di.FeatureModules
+import com.droidunplugged.kmp_platform_kit.core.SDKInfo
+import com.droidunplugged.kmp_platform_kit.core.auth.TokenManager
+import com.droidunplugged.kmp_platform_kit.core.auth.TokenRefreshProvider
+import com.droidunplugged.kmp_platform_kit.core.di.FeatureModules
 import com.droidunplugged.kmp_platform_kit.core.circuit.CircuitBreakerConfig
 import com.droidunplugged.kmp_platform_kit.core.config.SdkEnvironment
 import com.droidunplugged.kmp_platform_kit.core.config.SdkRemoteConfigProvider
@@ -206,7 +206,7 @@ object SDKInitializer {
     /**
      * Initialize the SDK immediately with all credentials.
      *
-     * @param baseUrl           Full base URL (e.g. "https://api.stage.cardinalhealth.com").
+     * @param baseUrl           Full base URL (e.g. "https://api.stage.example.com").
      * @param authToken         JWT Bearer token.
      * @param apiGuid           Correlation GUID for `x-cah-api-guid`.
      * @param clientId          OAuth client ID for `clientid` header.

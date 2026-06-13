@@ -118,7 +118,7 @@ data class SdkResponse(
 /**
  * Registry for [SdkRequestInterceptor] instances.
  *
- * Internal - managed exclusively by [com.cardinalhealth.vantus.sdk.core.SDKInitializer].
+ * Internal - managed exclusively by [com.droidunplugged.kmp_platform_kit.core.SDKInitializer].
  */
 internal object SdkInterceptorRegistry {
 

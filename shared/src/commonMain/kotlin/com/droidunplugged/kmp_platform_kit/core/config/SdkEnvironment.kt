@@ -6,7 +6,7 @@ import com.droidunplugged.kmp_platform_kit.core.SslPinConfig
  * Represents a deployment environment the SDK can connect to.
  *
  * Host apps define one or more environments and pass the active one to
- * [com.cardinalhealth.vantus.sdk.core.SDKInitializer]. This replaces the raw
+ * [com.droidunplugged.kmp_platform_kit.core.SDKInitializer]. This replaces the raw
  * `baseUrl` + `clientId` + `apiKey` parameters with a strongly-typed,
  * named configuration object.
  *
@@ -15,18 +15,18 @@ import com.droidunplugged.kmp_platform_kit.core.SslPinConfig
  * object Environments {
  *     val STAGING = SdkEnvironment(
  *         id = "staging",
- *         baseUrl = "https://api.stage.cardinalhealth.com",
+ *         baseUrl = "https://api.stage.example.com",
  *         clientId = BuildConfig.STAGING_CLIENT_ID,
  *         apiKey = BuildConfig.STAGING_API_KEY
  *     )
  *
  *     val PRODUCTION = SdkEnvironment(
  *         id = "production",
- *         baseUrl = "https://api.cardinalhealth.com",
+ *         baseUrl = "https://api.example.com",
  *         clientId = BuildConfig.PROD_CLIENT_ID,
  *         apiKey = BuildConfig.PROD_API_KEY,
  *         sslPins = SslPinConfig(
- *             hostname = "api.cardinalhealth.com",
+ *             hostname = "api.example.com",
  *             pins = listOf("sha256/AAAA...", "sha256/BBBB...")
  *         )
  *     )

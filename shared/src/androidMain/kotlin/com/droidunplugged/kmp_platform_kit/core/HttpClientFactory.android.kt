@@ -1,6 +1,6 @@
 package com.droidunplugged.kmp_platform_kit.core
 
-import com.cardinalhealth.vantus.sdk.core.SDKInfo
+import com.droidunplugged.kmp_platform_kit.core.SDKInfo
 import com.droidunplugged.kmp_platform_kit.shared.utils.StaticHeaders
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp

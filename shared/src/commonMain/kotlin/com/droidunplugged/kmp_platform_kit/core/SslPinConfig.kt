@@ -13,7 +13,7 @@ package com.droidunplugged.kmp_platform_kit.core
  * **How to get SHA-256 pins:**
  * ```bash
  * # Using openssl against your API server
- * openssl s_client -connect api.cardinalhealth.com:443 | \
+ * openssl s_client -connect api.example.com:443 | \
  *   openssl x509 -pubkey -noout | openssl pkey -pubin -outform der | \
  *   openssl dgst -sha256 -binary | openssl enc -base64
  * ```
@@ -23,7 +23,7 @@ package com.droidunplugged.kmp_platform_kit.core
  *
  * ```kotlin
  * SDKConfig.sslPins = SslPinConfig(
- *     hostname = "api.cardinalhealth.com",
+ *     hostname = "api.example.com",
  *     pins = listOf(
  *         "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",  // primary
  *         "sha256/BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB="   // backup
@@ -31,7 +31,7 @@ package com.droidunplugged.kmp_platform_kit.core
  * )
  * ```
  *
- * @property hostname The hostname to pin (e.g. `"api.cardinalhealth.com"`).
+ * @property hostname The hostname to pin (e.g. `"api.example.com"`).
  * @property pins     List of `sha256/<base64>` formatted public-key pins.
  * @throws IllegalArgumentException if [hostname] is blank or any pin does not start with `sha256/`.
  */
