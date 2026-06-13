@@ -6,7 +6,7 @@ import kotlin.concurrent.Volatile
 /**
  * iOS actual for PlatformConfig.
  *
- * - **dynamicHeaders**: authorization, x-cah-api-guid (change at runtime)
+ * - **dynamicHeaders**: authorization, x-api-guid (change at runtime)
  * - **envHeaders**: clientid, x-api-key (set once at init, fixed for session)
  *
  * [getHeader] resolves dynamic first → env second.

@@ -208,7 +208,7 @@ object SDKInitializer {
      *
      * @param baseUrl           Full base URL (e.g. "https://api.stage.example.com").
      * @param authToken         JWT Bearer token.
-     * @param apiGuid           Correlation GUID for `x-cah-api-guid`.
+     * @param apiGuid           Correlation GUID for `x-api-guid`.
      * @param clientId          OAuth client ID for `clientid` header.
      * @param apiKey            API gateway key for `x-api-key` header.
      * @param tokenExpiresIn    Optional: how long [authToken] is valid for. When provided,
@@ -257,7 +257,7 @@ object SDKInitializer {
      *
      * @param environment       Strongly-typed environment containing `baseUrl`, `clientId`, `apiKey`, and optional pinning config.
      * @param authToken         JWT Bearer token.
-     * @param apiGuid           Correlation GUID for `x-cah-api-guid`.
+     * @param apiGuid           Correlation GUID for `x-api-guid`.
      * @param tokenExpiresIn    Optional auth token lifetime used for proactive refresh scheduling.
      * @param additionalModules Extra Koin modules the host app can supply.
      */
@@ -307,7 +307,7 @@ object SDKInitializer {
         require(apiKey.isNotBlank()) { "apiKey must not be blank" }
 
         PlatformConfig.setEnvHeaders(mapOf("clientid" to clientId, "x-api-key" to apiKey))
-        PlatformConfig.setDynamicHeaders(mapOf("authorization" to authToken, "x-cah-api-guid" to apiGuid))
+        PlatformConfig.setDynamicHeaders(mapOf("authorization" to authToken, "x-api-guid" to apiGuid))
         log.d(TAG, "Headers configured")
 
         val runtimeModule = module {
@@ -445,13 +445,13 @@ object SDKInitializer {
     /**
      * Update both dynamic headers after re-login or account switch.
      *
-     * This replaces `authorization` and `x-cah-api-guid` atomically so subsequent
+     * This replaces `authorization` and `x-api-guid` atomically so subsequent
      * requests run with the new authenticated session context.
      */
     fun updateDynamicHeaders(authToken: String, apiGuid: String) {
         require(authToken.isNotBlank()) { "authToken must not be blank" }
         PlatformConfig.setDynamicHeaders(
-            mapOf("authorization" to authToken, "x-cah-api-guid" to apiGuid)
+            mapOf("authorization" to authToken, "x-api-guid" to apiGuid)
         )
         telemetry.recordSdkEvent(SDKEvent.TOKEN_REFRESHED)
     }

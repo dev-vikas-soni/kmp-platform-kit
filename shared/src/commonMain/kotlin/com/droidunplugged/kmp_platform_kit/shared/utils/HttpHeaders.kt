@@ -12,7 +12,7 @@ package com.droidunplugged.kmp_platform_kit.shared.utils
  *  │ Category         │ Headers              │ Lifecycle                    │
  *  ├──────────────────┼──────────────────────┼──────────────────────────────┤
  *  │ DYNAMIC          │ authorization        │ Token refreshes every ~15min │
- *  │ (host app)       │ x-cah-api-guid       │ Changes every login          │
+ *  │ (host app)       │ x-api-guid           │ Changes every login          │
  *  ├──────────────────┼──────────────────────┼──────────────────────────────┤
  *  │ ENV-SPECIFIC     │ clientid             │ Fixed per env (DEV/STAGE/…)  │
  *  │ (host app)       │ x-api-key            │ Fixed per env (DEV/STAGE/…)  │
@@ -29,7 +29,7 @@ package com.droidunplugged.kmp_platform_kit.shared.utils
 
 /** Header keys read from [PlatformConfig] on every request. */
 internal val ALL_REQUEST_HEADER_KEYS: List<String> =
-    listOf("authorization", "x-cah-api-guid", "clientid", "x-api-key")
+    listOf("authorization", "x-api-guid", "clientid", "x-api-key")
 
 /** Static headers baked into the SDK - same value for all requests on a platform. */
 internal object StaticHeaders {

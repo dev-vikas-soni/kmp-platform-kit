@@ -5,7 +5,7 @@ package com.droidunplugged.kmp_platform_kit.core
  * Thread-safe runtime header store, split by lifecycle:
  *
  * **Dynamic headers** - change frequently (token refresh, new login):
- *   `authorization`, `x-cah-api-guid`
+ *   `authorization`, `x-api-guid`
  *
  * **Env-specific headers** - fixed for the session:
  *   `clientid`, `x-api-key`
@@ -17,7 +17,7 @@ package com.droidunplugged.kmp_platform_kit.core
  */
 expect object PlatformConfig {
 
-    /** Store dynamic headers (authorization, x-cah-api-guid). */
+    /** Store dynamic headers (authorization, x-api-guid). */
     fun setDynamicHeaders(map: Map<String, String>)
 
     /** Store env-specific headers (clientid, x-api-key). Set once at init. */
