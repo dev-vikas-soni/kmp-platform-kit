@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?><!--
+    OWASP Dependency-Check CVE Suppression File
+    =============================================
+    Use this file to suppress false-positive or accepted-risk CVE findings.
+
+    IMPORTANT RULES:
+    1. Every suppression MUST have a non-empty <notes> element explaining:
+         a) Why the CVE does not apply (false positive), OR
+         b) Why the risk is accepted (mitigating control, out-of-scope path, etc.)
+    2. All suppressions are reviewed quarterly by the Security Architect.
+    3. Suppressions without notes will be removed automatically by the
+       check-suppression-notes.sh script in CI.
+
+    Format docs: https://jeremylong.github.io/DependencyCheck/general/suppression.html
+
+    Example suppression:
+    <suppress>
+        <notes>
+            CVE-2024-XXXXX: This CVE affects the test-only :ktor-client-mock artifact
+            which is never shipped in production. Verified on 2025-01-15 by @security-team.
+        </notes>
+        <packageUrl regex="true">^pkg:maven/io\.ktor/ktor\-client\-mock@.*$</packageUrl>
+        <cve>CVE-2024-XXXXX</cve>
+    </suppress>
+-->
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-    <!-- Add suppressions here as needed -->
+
+    <!--
+        Add project-specific suppressions below.
+        Leave this file committed even when empty - it is referenced by the
+        OWASP Gradle plugin configuration and the security.yml CI workflow.
+    -->
+
 </suppressions>

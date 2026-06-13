@@ -1,7 +1,20 @@
+# Detekt configuration for Vantus SDK
+# Run: ./gradlew detekt
+
 build:
   maxIssues: 10
+  excludeCorrectable: false
+  weights:
+    complexity: 2
+    LongParameterList: 2
+    style: 1
+    comments: 1
+
+config:
+  validation: true
 
 complexity:
+  active: true
   CyclomaticComplexMethod:
     active: true
     threshold: 15
@@ -10,42 +23,120 @@ complexity:
     threshold: 60
   LongParameterList:
     active: true
-    functionThreshold: 6
+    threshold: 6
+    ignoreDefaultParameters: true
+    ignoreDataClasses: true
   TooManyFunctions:
     active: true
-    thresholdInFiles: 15
     thresholdInClasses: 20
+    thresholdInFiles: 15
+    thresholdInInterfaces: 10
+    thresholdInEnums: 5
+    thresholdInObjects: 15
+
+exceptions:
+  active: true
+  TooGenericExceptionCaught:
+    active: true
+    exceptionNames:
+      - ArrayIndexOutOfBoundsException
+      - Error
+      - IllegalMonitorStateException
+      - NullPointerException
+      - IndexOutOfBoundsException
+      - RuntimeException
+      - Throwable
+    allowedExceptionNameRegex: "_|(ignore|expected).*"
+  SwallowedException:
+    active: true
+    ignoredExceptionTypes:
+      - InterruptedException
+      - MalformedURLException
+      - NumberFormatException
+      - ParseException
+
+naming:
+  active: true
+  InvalidPackageDeclaration:
+    active: false   # KMP: source roots (commonMain/kotlin, iosMain/kotlin) don't match full Java package dirs - always false-positive
+  MatchingDeclarationName:
+    active: false   # KMP: expect/actual files use platform-suffixed names (Logger.android.kt → PlatformLogger)
+  FunctionNaming:
+    active: true
+    functionPattern: "[a-z][a-zA-Z0-9]*"
+    excludeClassPattern: ".*Test"
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: "[A-Z][_A-Z0-9]*"
+    propertyPattern: "[A-Za-z][_A-Za-z0-9]*"
+  PackageNaming:
+    active: true
+    packagePattern: "[a-z]+(\\.[a-z][A-Za-z0-9]*)*"
 
 style:
+  active: true
   MagicNumber:
     active: true
-    ignoreNumbers: ['-1', '0', '1', '2', '100']
+    ignoreNumbers:
+      - "-1"
+      - "0"
+      - "1"
+      - "2"
+      - "100"
+    ignoreHashCodeFunction: true
+    ignorePropertyDeclaration: true
+    ignoreLocalVariableDeclaration: false
+    ignoreAnnotation: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreEnums: true
+    ignoreRanges: true
   MaxLineLength:
     active: true
     maxLineLength: 120
+    excludeCommentStatements: true
+    excludePackageStatements: true
+    excludeImportStatements: true
   ReturnCount:
     active: true
     max: 4
+    excludeReturnFromLambda: true
+    excludeGuardClauses: true
   WildcardImport:
     active: true
+    excludeImports:
+      - "java.util.*"
+      - "kotlinx.android.synthetic.*"
+  UnusedImports:
+    active: true
+  UnusedPrivateMember:
+    active: true
+    allowedNames: "(_|ignored|expected|serialVersionUID)"
 
-exceptions:
-  TooGenericExceptionCaught:
+empty-blocks:
+  active: true
+  EmptyCatchBlock:
     active: true
-  SwallowedException:
+    allowedExceptionNameRegex: "_|(ignore|expected).*"
+  EmptyFunctionBlock:
     active: true
+    ignoreOverridden: true
 
 potential-bugs:
+  active: true
+  CastToNullableType:
+    active: true
+  Deprecation:
+    active: false
+  EqualsAlwaysReturnsTrueOrFalse:
+    active: true
+  InvalidRange:
+    active: true
   UnsafeCast:
     active: true
 
 performance:
+  active: true
   SpreadOperator:
     active: true
-
-# Disabled KMP specific rules
-naming:
-  MatchingDeclarationName:
-    active: false
-  InvalidPackageDeclaration:
-    active: false
+  ForEachOnRange:
+    active: true

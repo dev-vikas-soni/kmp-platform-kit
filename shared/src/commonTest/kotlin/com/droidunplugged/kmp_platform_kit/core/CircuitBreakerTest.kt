@@ -1,5 +1,6 @@
 package com.droidunplugged.kmp_platform_kit.core
 
+import com.droidunplugged.kmp_platform_kit.core.circuit.CircuitBreaker
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
