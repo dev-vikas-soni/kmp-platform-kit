@@ -1,5 +1,6 @@
 package com.droidunplugged.kmp_platform_kit.core
 
+import com.droidunplugged.kmp_platform_kit.shared.utils.PlatformLogger
 import com.droidunplugged.kmp_platform_kit.shared.utils.StaticHeaders
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.darwin.Darwin
@@ -8,6 +9,7 @@ import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.request.header
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
+import kotlinx.cinterop.convert
 import kotlinx.cinterop.get
 import kotlinx.cinterop.usePinned
 import platform.CoreCrypto.CC_SHA256
@@ -67,7 +69,9 @@ actual fun createClientImpl(): HttpClient {
             // SSL Certificate Pinning: enforced only when SDKConfig.sslPins is set
             SDKConfig.sslPins?.let { pinConfig ->
                 handleChallenge { _, _, challenge, completionHandler ->
-                    applySslPinning(challenge, pinConfig, completionHandler)
+                    applySslPinning(challenge, pinConfig) { disposition, credential ->
+                        completionHandler(disposition.convert(), credential)
+                    }
                 }
             }
         }
@@ -105,12 +109,12 @@ private fun applySslPinning(
 ) {
     val method = challenge.protectionSpace.authenticationMethod
     if (method != NSURLAuthenticationMethodServerTrust) {
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling.toLong(), null)
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, null)
         return
     }
     val host = challenge.protectionSpace.host
     if (host != pinConfig.hostname) {
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling.toLong(), null)
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, null)
         return
     }
     val rawTrust = challenge.protectionSpace.serverTrust

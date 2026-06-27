@@ -1,0 +1,1016 @@
+public abstract interface class com/droidunplugged/kmp_platform_kit/core/ApiClient {
+	public abstract fun delete (Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun get (Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;Ljava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun patch (Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun post (Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun put (Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/ApiClient$DefaultImpls {
+	public static synthetic fun delete$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiClient;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun get$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiClient;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;Ljava/lang/Long;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun patch$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiClient;Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun post$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiClient;Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun put$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiClient;Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Lkotlin/jvm/functions/Function1;Ljava/lang/Long;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract class com/droidunplugged/kmp_platform_kit/core/ApiResult {
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/ApiResult$Cancelled : com/droidunplugged/kmp_platform_kit/core/ApiResult {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Cancelled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/ApiResult$Failure : com/droidunplugged/kmp_platform_kit/core/ApiResult {
+	public fun <init> (ILjava/lang/String;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Failure;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Failure;ILjava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Failure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()I
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/ApiResult$NetworkError : com/droidunplugged/kmp_platform_kit/core/ApiResult {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$NetworkError;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/ApiResult$Success : com/droidunplugged/kmp_platform_kit/core/ApiResult {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Success;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Success;Ljava/lang/Object;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/ApiResult$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/droidunplugged/kmp_platform_kit/core/BaseFacade : com/droidunplugged/kmp_platform_kit/core/di/SdkKoinComponent {
+	public fun <init> ()V
+	public fun getKoin ()Lorg/koin/core/Koin;
+	protected final fun getLog ()Lcom/droidunplugged/kmp_platform_kit/shared/utils/Logger;
+	protected abstract fun getTag ()Ljava/lang/String;
+	protected final fun requireInitialized ()V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/CachePolicy {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy$Companion;
+	public synthetic fun <init> (Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;JZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;JZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public final fun component2-UwyO8pc ()J
+	public final fun component3 ()Z
+	public final fun copy-8Mi8wO0 (Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;JZ)Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;
+	public static synthetic fun copy-8Mi8wO0$default (Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;JZILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxAge-UwyO8pc ()J
+	public final fun getStaleWhileRevalidate ()Z
+	public final fun getStrategy ()Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/CachePolicy$Companion {
+	public final fun getCACHE_FIRST_5MIN ()Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;
+	public final fun getDEFAULT ()Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;
+	public final fun getDEFAULT_MAX_AGE-UwyO8pc ()J
+	public final fun getNO_CACHE ()Lcom/droidunplugged/kmp_platform_kit/core/CachePolicy;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/CacheStrategy : java/lang/Enum {
+	public static final field CACHE_FIRST Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public static final field CACHE_ONLY Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public static final field NETWORK_FIRST Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public static final field NETWORK_ONLY Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+	public static fun values ()[Lcom/droidunplugged/kmp_platform_kit/core/CacheStrategy;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/ErrorType : java/lang/Enum {
+	public static final field CLIENT_ERROR Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+	public static final field NETWORK Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+	public static final field PARSE_ERROR Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+	public static final field SERVER_ERROR Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+	public static final field UNEXPECTED Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+	public static fun values ()[Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/HttpClientFactory_androidKt {
+	public static final fun createClientImpl ()Lio/ktor/client/HttpClient;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/NoOpTelemetry : com/droidunplugged/kmp_platform_kit/core/SDKTelemetry {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/NoOpTelemetry;
+	public fun recordApiCall (Ljava/lang/String;JII)V
+	public fun recordError (Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;Ljava/lang/String;Ljava/lang/String;)V
+	public fun recordSdkEvent (Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;Ljava/lang/String;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/PlatformConfig {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/PlatformConfig;
+	public final fun getHeader (Ljava/lang/String;)Ljava/lang/String;
+	public final fun setDynamicHeaders (Ljava/util/Map;)V
+	public final fun setEnvHeaders (Ljava/util/Map;)V
+	public final fun updateAuthToken (Ljava/lang/String;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/RetryConfig {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig$Companion;
+	public static final field DEFAULT_INITIAL_BACKOFF_MS J
+	public static final field DEFAULT_MAX_ATTEMPTS I
+	public fun <init> ()V
+	public fun <init> (IJ)V
+	public synthetic fun <init> (IJILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()J
+	public final fun copy (IJ)Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;IJILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInitialBackoffMs ()J
+	public final fun getMaxAttempts ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/RetryConfig$Companion {
+	public final fun getNO_RETRY ()Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKConfig {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/SDKConfig;
+	public final fun disableDebugMode ()V
+	public final fun enableDebugMode ()V
+	public final fun getDebugMode ()Z
+	public final fun getSslPins ()Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;
+	public final fun setSslPins (Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKConfig_androidKt {
+	public static final fun isDebugBuild ()Z
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKCredentials {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiGuid ()Ljava/lang/String;
+	public final fun getApiKey ()Ljava/lang/String;
+	public final fun getAuthToken ()Ljava/lang/String;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getClientId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKErrorCode {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/SDKErrorCode;
+	public static final field NETWORK_ERROR Ljava/lang/String;
+	public static final field REQUEST_CANCELLED Ljava/lang/String;
+	public static final field UNEXPECTED_ERROR Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKEvent : java/lang/Enum {
+	public static final field FEATURE_CALLED Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;
+	public static final field INITIALIZED Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;
+	public static final field RESET Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;
+	public static final field TOKEN_REFRESHED Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;
+	public static fun values ()[Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKInitializer {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/SDKInitializer;
+	public final fun addInterceptor (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkRequestInterceptor;)V
+	public final fun clearDeferredProvider ()V
+	public final fun configure (Lkotlin/jvm/functions/Function0;)V
+	public final fun ensureInitialized (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun init-AhSEoPs (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun init-AhSEoPs$default (Lcom/droidunplugged/kmp_platform_kit/core/SDKInitializer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun init-FHKeTTw (Lcom/droidunplugged/kmp_platform_kit/core/config/SdkEnvironment;Ljava/lang/String;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun init-FHKeTTw$default (Lcom/droidunplugged/kmp_platform_kit/core/SDKInitializer;Lcom/droidunplugged/kmp_platform_kit/core/config/SdkEnvironment;Ljava/lang/String;Ljava/lang/String;Lkotlin/time/Duration;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun isInitialized ()Z
+	public final fun registerPlugin (Lcom/droidunplugged/kmp_platform_kit/core/SDKPlugin;)V
+	public final fun removeInterceptor (Ljava/lang/String;)V
+	public final fun reset (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setCircuitBreakerConfig (Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig;)V
+	public final fun setRemoteConfigProvider (Lcom/droidunplugged/kmp_platform_kit/core/config/SdkRemoteConfigProvider;)V
+	public final fun setTelemetry (Lcom/droidunplugged/kmp_platform_kit/core/SDKTelemetry;)V
+	public final fun setTokenRefreshProvider (Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenRefreshProvider;)V
+	public final fun updateAuthToken (Ljava/lang/String;)V
+	public final fun updateDynamicHeaders (Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public abstract interface class com/droidunplugged/kmp_platform_kit/core/SDKPlugin {
+	public abstract fun getId ()Ljava/lang/String;
+	public abstract fun getKoinModule ()Lorg/koin/core/module/Module;
+	public abstract fun onSDKInitialized ()V
+	public abstract fun onSDKReset ()V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKPlugin$DefaultImpls {
+	public static fun onSDKInitialized (Lcom/droidunplugged/kmp_platform_kit/core/SDKPlugin;)V
+	public static fun onSDKReset (Lcom/droidunplugged/kmp_platform_kit/core/SDKPlugin;)V
+}
+
+public abstract class com/droidunplugged/kmp_platform_kit/core/SDKState {
+	public final fun dataOrNull ()Ljava/lang/Object;
+	public final fun errorMessageOrNull ()Ljava/lang/String;
+	public final fun isError ()Z
+	public final fun isLoading ()Z
+	public final fun isSuccess ()Z
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKState$Error : com/droidunplugged/kmp_platform_kit/core/SDKState {
+	public fun <init> (Ljava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/lang/String;Z)Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Error;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Error;Ljava/lang/String;ZILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isNetworkError ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKState$ErrorBody : com/droidunplugged/kmp_platform_kit/core/SDKState {
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/SDKState$ErrorBody;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/SDKState$ErrorBody;ILjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/SDKState$ErrorBody;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()I
+	public final fun getErrorCode ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKState$Loading : com/droidunplugged/kmp_platform_kit/core/SDKState {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Loading;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKState$Success : com/droidunplugged/kmp_platform_kit/core/SDKState {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Success;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Success;Ljava/lang/Object;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/SDKState$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKStateFlowKt {
+	public static final fun sdkStateFlow (Lkotlin/jvm/functions/Function1;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun toSDKState (Lcom/droidunplugged/kmp_platform_kit/core/ApiResult;)Lcom/droidunplugged/kmp_platform_kit/core/SDKState;
+}
+
+public abstract interface class com/droidunplugged/kmp_platform_kit/core/SDKTelemetry {
+	public abstract fun recordApiCall (Ljava/lang/String;JII)V
+	public abstract fun recordError (Lcom/droidunplugged/kmp_platform_kit/core/ErrorType;Ljava/lang/String;Ljava/lang/String;)V
+	public abstract fun recordSdkEvent (Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;Ljava/lang/String;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SDKTelemetry$DefaultImpls {
+	public static synthetic fun recordSdkEvent$default (Lcom/droidunplugged/kmp_platform_kit/core/SDKTelemetry;Lcom/droidunplugged/kmp_platform_kit/core/SDKEvent;Ljava/lang/String;ILjava/lang/Object;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SdkNotConfiguredException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/SslPinConfig {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHostname ()Ljava/lang/String;
+	public final fun getPins ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/auth/TokenConfig {
+	public synthetic fun <init> (JIJILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JIJLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-UwyO8pc ()J
+	public final fun component2 ()I
+	public final fun component3 ()J
+	public final fun copy-KLykuaI (JIJ)Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenConfig;
+	public static synthetic fun copy-KLykuaI$default (Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenConfig;JIJILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getProactiveRefreshBuffer-UwyO8pc ()J
+	public final fun getRefreshMaxRetries ()I
+	public final fun getRefreshRetryBackoffMs ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/droidunplugged/kmp_platform_kit/core/auth/TokenRefreshProvider {
+	public abstract fun refreshToken (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract class com/droidunplugged/kmp_platform_kit/core/auth/TokenResult {
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/auth/TokenResult$RefreshFailed : com/droidunplugged/kmp_platform_kit/core/auth/TokenResult {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$RefreshFailed;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$RefreshFailed;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$RefreshFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/auth/TokenResult$Success : com/droidunplugged/kmp_platform_kit/core/auth/TokenResult {
+	public synthetic fun <init> (Ljava/lang/String;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2-UwyO8pc ()J
+	public final fun copy-HG0u8IE (Ljava/lang/String;J)Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$Success;
+	public static synthetic fun copy-HG0u8IE$default (Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$Success;Ljava/lang/String;JILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpiresIn-UwyO8pc ()J
+	public final fun getNewToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/auth/TokenResult$UserLoggedOut : com/droidunplugged/kmp_platform_kit/core/auth/TokenResult {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/auth/TokenResult$UserLoggedOut;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker {
+	public fun <init> (Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun execute (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun reset (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker$State : java/lang/Enum {
+	public static final field CLOSED Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker$State;
+	public static final field HALF_OPEN Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker$State;
+	public static final field OPEN Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker$State;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker$State;
+	public static fun values ()[Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreaker$State;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig {
+	public synthetic fun <init> (IIJILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IIJLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3-UwyO8pc ()J
+	public final fun copy-SxA4cEA (IIJ)Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig;
+	public static synthetic fun copy-SxA4cEA$default (Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig;IIJILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/circuit/CircuitBreakerConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFailureThreshold ()I
+	public final fun getOpenDuration-UwyO8pc ()J
+	public final fun getSuccessThreshold ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/circuit/CircuitOpenException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;J)V
+	public final fun getEndpoint ()Ljava/lang/String;
+	public final fun getRetryAfterMs ()J
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/config/SdkEnvironment {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;)Lcom/droidunplugged/kmp_platform_kit/core/config/SdkEnvironment;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/config/SdkEnvironment;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/config/SdkEnvironment;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiKey ()Ljava/lang/String;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getClientId ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getSslPins ()Lcom/droidunplugged/kmp_platform_kit/core/SslPinConfig;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/config/SdkEnvironmentId {
+	public static final field DEVELOPMENT Ljava/lang/String;
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/config/SdkEnvironmentId;
+	public static final field PRODUCTION Ljava/lang/String;
+	public static final field STAGING Ljava/lang/String;
+	public static final field UAT Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/config/SdkRemoteConfig {
+	public synthetic fun <init> (Ljava/util/Map;Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;Lkotlin/time/Duration;Ljava/lang/String;Lkotlin/time/Duration;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/util/Map;Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;Lkotlin/time/Duration;Ljava/lang/String;Lkotlin/time/Duration;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;
+	public final fun component3-FghU774 ()Lkotlin/time/Duration;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5-FghU774 ()Lkotlin/time/Duration;
+	public final fun copy-DlrPkwI (Ljava/util/Map;Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;Lkotlin/time/Duration;Ljava/lang/String;Lkotlin/time/Duration;)Lcom/droidunplugged/kmp_platform_kit/core/config/SdkRemoteConfig;
+	public static synthetic fun copy-DlrPkwI$default (Lcom/droidunplugged/kmp_platform_kit/core/config/SdkRemoteConfig;Ljava/util/Map;Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;Lkotlin/time/Duration;Ljava/lang/String;Lkotlin/time/Duration;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/config/SdkRemoteConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCacheMaxAge-FghU774 ()Lkotlin/time/Duration;
+	public final fun getFeatureFlags ()Ljava/util/Map;
+	public final fun getMaintenanceMessage ()Ljava/lang/String;
+	public final fun getRefreshInterval-FghU774 ()Lkotlin/time/Duration;
+	public final fun getRetryConfig ()Lcom/droidunplugged/kmp_platform_kit/core/RetryConfig;
+	public fun hashCode ()I
+	public final fun isFeatureEnabled (Ljava/lang/String;)Z
+	public final fun isInMaintenance ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/droidunplugged/kmp_platform_kit/core/config/SdkRemoteConfigProvider {
+	public abstract fun fetchConfig (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract class com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public final fun getRequiresReLogin ()Z
+	public final fun isRetryable ()Z
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$BusinessError : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()I
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$BusinessError;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$BusinessError;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$BusinessError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiCode ()Ljava/lang/String;
+	public final fun getField ()Ljava/lang/String;
+	public final fun getHttpCode ()I
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$Conflict : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Conflict;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Conflict;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Conflict;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConflictingId ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$Forbidden : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Forbidden;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Forbidden;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Forbidden;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRequiredPermission ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$NetworkFailure : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NetworkFailure;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NetworkFailure;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NetworkFailure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCause ()Ljava/lang/Throwable;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$NoConnectivity : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NoConnectivity;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$NotFound : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NotFound;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NotFound;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$NotFound;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getResourceType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$ParseError : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$ParseError;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$ParseError;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$ParseError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCause ()Ljava/lang/Throwable;
+	public final fun getExpectedType ()Ljava/lang/String;
+	public final fun getReceivedSnippet ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$RateLimited : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Long;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Long;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Long;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Long;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$RateLimited;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$RateLimited;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$RateLimited;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRetryAfterMs ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$SdkNotInitialized : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$SdkNotInitialized;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$ServerError : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (ILjava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (ILjava/lang/String;Ljava/lang/Long;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$ServerError;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$ServerError;ILjava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$ServerError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHttpCode ()I
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRetryAfterMs ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$Timeout : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (JLjava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Timeout;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Timeout;JLjava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Timeout;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEndpoint ()Ljava/lang/String;
+	public final fun getTimeoutMs ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$Unauthorized : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Unauthorized;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Unauthorized;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Unauthorized;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHint ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/error/SdkError$Unexpected : com/droidunplugged/kmp_platform_kit/core/error/SdkError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Throwable;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Unexpected;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Unexpected;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/error/SdkError$Unexpected;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCause ()Ljava/lang/Throwable;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeaders ()Ljava/util/Map;
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getQueryParams ()Ljava/util/Map;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun withHeader (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;
+	public final fun withQueryParam (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;
+	public final fun withoutHeader (Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;
+}
+
+public abstract interface class com/droidunplugged/kmp_platform_kit/core/interceptor/SdkRequestInterceptor {
+	public abstract fun getId ()Ljava/lang/String;
+	public abstract fun onError (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onRequest (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun onResponse (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkResponse;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/interceptor/SdkRequestInterceptor$DefaultImpls {
+	public static fun onError (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkRequestInterceptor;Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onRequest (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkRequestInterceptor;Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkMutableRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun onResponse (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkRequestInterceptor;Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkResponse;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/interceptor/SdkResponse {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;ILjava/util/Map;JZ)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILjava/util/Map;JZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()J
+	public final fun component6 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;ILjava/util/Map;JZ)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkResponse;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkResponse;Ljava/lang/String;Ljava/lang/String;ILjava/util/Map;JZILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/interceptor/SdkResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCacheHit ()Z
+	public final fun getDurationMs ()J
+	public final fun getHeaders ()Ljava/util/Map;
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getStatusCode ()I
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/Page {
+	public fun <init> (Ljava/util/List;Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;
+	public final fun copy (Ljava/util/List;Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;)Lcom/droidunplugged/kmp_platform_kit/core/paging/Page;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/paging/Page;Ljava/util/List;Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/paging/Page;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public final fun getPagination ()Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/PagerState$Complete : com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Complete;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Complete;Ljava/util/List;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Complete;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/PagerState$Error : com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Z)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Error;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Error;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Ljava/lang/String;
+	public final fun getItems ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun isNetworkError ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/PagerState$Idle : com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Idle;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/PagerState$LoadingInitial : com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$LoadingInitial;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/PagerState$LoadingMore : com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$LoadingMore;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$LoadingMore;Ljava/util/List;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$LoadingMore;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/PagerState$Success : com/droidunplugged/kmp_platform_kit/core/paging/PagerState {
+	public fun <init> (Ljava/util/List;Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;
+	public final fun copy (Ljava/util/List;Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Success;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Success;Ljava/util/List;Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/paging/PagerState$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public final fun getPagination ()Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/paging/SdkPager {
+	public fun <init> (ILkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (ILkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun cancel ()V
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun loadNextPage ()V
+	public final fun refresh ()V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun child ()Lcom/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext;
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getParentSpanId ()Ljava/lang/String;
+	public final fun getSpanId ()Ljava/lang/String;
+	public final fun getTraceId ()Ljava/lang/String;
+	public final fun getW3cTraceparent ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext$Companion {
+	public final fun new ()Lcom/droidunplugged/kmp_platform_kit/core/tracing/SdkTraceContext;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/features/catalog/di/CatalogModuleKt {
+	public static final fun getCatalogModule ()Lorg/koin/core/module/Module;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/features/catalog/facade/CatalogFacade : com/droidunplugged/kmp_platform_kit/core/BaseFacade {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/features/catalog/facade/CatalogFacade;
+	public final fun getProductDetails (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getProducts (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/features/catalog/models/Product {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()D
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;DLjava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getImageUrl ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPrice ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/droidunplugged/kmp_platform_kit/features/catalog/models/Product$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/droidunplugged/kmp_platform_kit/features/catalog/models/Product;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/features/catalog/models/Product$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class com/droidunplugged/kmp_platform_kit/features/catalog/remote/CatalogApi {
+	public fun <init> (Lcom/droidunplugged/kmp_platform_kit/core/ApiClient;)V
+	public fun getProductDetails (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getProducts (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;
+	public final fun copy (Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;)Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse;Ljava/lang/String;Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;
+	public final fun getErrorMessage ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isSuccess ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/BaseApiResponse$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/ErrorDetail$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo {
+	public static final field Companion Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;Ljava/util/List;ILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrorDetails ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class com/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/ErrorInfo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo {
+	public fun <init> ()V
+	public fun <init> (IIIIZZ)V
+	public synthetic fun <init> (IIIIZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun copy (IIIIZZ)Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;
+	public static synthetic fun copy$default (Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;IIIIZZILjava/lang/Object;)Lcom/droidunplugged/kmp_platform_kit/shared/models/PaginationInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCurrentPage ()I
+	public final fun getHasNext ()Z
+	public final fun getHasPrevious ()Z
+	public final fun getPageSize ()I
+	public final fun getTotalElements ()I
+	public final fun getTotalPages ()I
+	public fun hashCode ()I
+	public final fun isFirstPage ()Z
+	public final fun isLastPage ()Z
+	public final fun isPaginated ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/utils/Constants {
+	public static final field ERROR_CODE_API_STATUS I
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/shared/utils/Constants;
+	public static final field NO_RESPONSE_MESSAGE Ljava/lang/String;
+}
+
+public abstract interface class com/droidunplugged/kmp_platform_kit/shared/utils/Logger {
+	public abstract fun d (Ljava/lang/String;Ljava/lang/String;)V
+	public abstract fun e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun i (Ljava/lang/String;Ljava/lang/String;)V
+	public abstract fun w (Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/utils/Logger$DefaultImpls {
+	public static synthetic fun e$default (Lcom/droidunplugged/kmp_platform_kit/shared/utils/Logger;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/utils/NoOpLogger : com/droidunplugged/kmp_platform_kit/shared/utils/Logger {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/shared/utils/NoOpLogger;
+	public fun d (Ljava/lang/String;Ljava/lang/String;)V
+	public fun e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun i (Ljava/lang/String;Ljava/lang/String;)V
+	public fun w (Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class com/droidunplugged/kmp_platform_kit/shared/utils/PlatformLogger {
+	public static final field INSTANCE Lcom/droidunplugged/kmp_platform_kit/shared/utils/PlatformLogger;
+	public final fun get ()Lcom/droidunplugged/kmp_platform_kit/shared/utils/Logger;
+	public final fun set (Lcom/droidunplugged/kmp_platform_kit/shared/utils/Logger;)V
+}
+

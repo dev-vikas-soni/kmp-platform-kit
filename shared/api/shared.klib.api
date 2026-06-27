@@ -1,0 +1,1129 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <kmp-platform-kit:shared>
+open annotation class com.droidunplugged.kmp_platform_kit.shared.concurrency/JvmSynchronized : kotlin/Annotation { // com.droidunplugged.kmp_platform_kit.shared.concurrency/JvmSynchronized|null[0]
+    constructor <init>() // com.droidunplugged.kmp_platform_kit.shared.concurrency/JvmSynchronized.<init>|<init>(){}[0]
+}
+
+final enum class com.droidunplugged.kmp_platform_kit.core/CacheStrategy : kotlin/Enum<com.droidunplugged.kmp_platform_kit.core/CacheStrategy> { // com.droidunplugged.kmp_platform_kit.core/CacheStrategy|null[0]
+    enum entry CACHE_FIRST // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.CACHE_FIRST|null[0]
+    enum entry CACHE_ONLY // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.CACHE_ONLY|null[0]
+    enum entry NETWORK_FIRST // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.NETWORK_FIRST|null[0]
+    enum entry NETWORK_ONLY // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.NETWORK_ONLY|null[0]
+
+    final val entries // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.droidunplugged.kmp_platform_kit.core/CacheStrategy> // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.droidunplugged.kmp_platform_kit.core/CacheStrategy // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.droidunplugged.kmp_platform_kit.core/CacheStrategy> // com.droidunplugged.kmp_platform_kit.core/CacheStrategy.values|values#static(){}[0]
+}
+
+final enum class com.droidunplugged.kmp_platform_kit.core/ErrorType : kotlin/Enum<com.droidunplugged.kmp_platform_kit.core/ErrorType> { // com.droidunplugged.kmp_platform_kit.core/ErrorType|null[0]
+    enum entry CLIENT_ERROR // com.droidunplugged.kmp_platform_kit.core/ErrorType.CLIENT_ERROR|null[0]
+    enum entry NETWORK // com.droidunplugged.kmp_platform_kit.core/ErrorType.NETWORK|null[0]
+    enum entry PARSE_ERROR // com.droidunplugged.kmp_platform_kit.core/ErrorType.PARSE_ERROR|null[0]
+    enum entry SERVER_ERROR // com.droidunplugged.kmp_platform_kit.core/ErrorType.SERVER_ERROR|null[0]
+    enum entry UNEXPECTED // com.droidunplugged.kmp_platform_kit.core/ErrorType.UNEXPECTED|null[0]
+
+    final val entries // com.droidunplugged.kmp_platform_kit.core/ErrorType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.droidunplugged.kmp_platform_kit.core/ErrorType> // com.droidunplugged.kmp_platform_kit.core/ErrorType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.droidunplugged.kmp_platform_kit.core/ErrorType // com.droidunplugged.kmp_platform_kit.core/ErrorType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.droidunplugged.kmp_platform_kit.core/ErrorType> // com.droidunplugged.kmp_platform_kit.core/ErrorType.values|values#static(){}[0]
+}
+
+final enum class com.droidunplugged.kmp_platform_kit.core/SDKEvent : kotlin/Enum<com.droidunplugged.kmp_platform_kit.core/SDKEvent> { // com.droidunplugged.kmp_platform_kit.core/SDKEvent|null[0]
+    enum entry FEATURE_CALLED // com.droidunplugged.kmp_platform_kit.core/SDKEvent.FEATURE_CALLED|null[0]
+    enum entry INITIALIZED // com.droidunplugged.kmp_platform_kit.core/SDKEvent.INITIALIZED|null[0]
+    enum entry RESET // com.droidunplugged.kmp_platform_kit.core/SDKEvent.RESET|null[0]
+    enum entry TOKEN_REFRESHED // com.droidunplugged.kmp_platform_kit.core/SDKEvent.TOKEN_REFRESHED|null[0]
+
+    final val entries // com.droidunplugged.kmp_platform_kit.core/SDKEvent.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.droidunplugged.kmp_platform_kit.core/SDKEvent> // com.droidunplugged.kmp_platform_kit.core/SDKEvent.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.droidunplugged.kmp_platform_kit.core/SDKEvent // com.droidunplugged.kmp_platform_kit.core/SDKEvent.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.droidunplugged.kmp_platform_kit.core/SDKEvent> // com.droidunplugged.kmp_platform_kit.core/SDKEvent.values|values#static(){}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.core.auth/TokenRefreshProvider { // com.droidunplugged.kmp_platform_kit.core.auth/TokenRefreshProvider|null[0]
+    abstract suspend fun refreshToken(kotlin/String): com.droidunplugged.kmp_platform_kit.core.auth/TokenResult // com.droidunplugged.kmp_platform_kit.core.auth/TokenRefreshProvider.refreshToken|refreshToken(kotlin.String){}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfigProvider { // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfigProvider|null[0]
+    abstract suspend fun fetchConfig(): com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfigProvider.fetchConfig|fetchConfig(){}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor { // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor|null[0]
+    abstract val id // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor.id|{}id[0]
+        abstract fun <get-id>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor.id.<get-id>|<get-id>(){}[0]
+
+    open suspend fun onError(kotlin/String, kotlin/Throwable) // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor.onError|onError(kotlin.String;kotlin.Throwable){}[0]
+    open suspend fun onRequest(com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest): com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor.onRequest|onRequest(com.droidunplugged.kmp_platform_kit.core.interceptor.SdkMutableRequest){}[0]
+    open suspend fun onResponse(com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse) // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor.onResponse|onResponse(com.droidunplugged.kmp_platform_kit.core.interceptor.SdkResponse){}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.core/ApiClient { // com.droidunplugged.kmp_platform_kit.core/ApiClient|null[0]
+    abstract suspend fun <#A1: kotlin/Any?, #B1: kotlin/Any?> patch(kotlin/String, #A1, kotlinx.serialization/KSerializer<#A1>, kotlin/Function1<kotlin/String, #B1>, kotlin/Long? = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult<#B1> // com.droidunplugged.kmp_platform_kit.core/ApiClient.patch|patch(kotlin.String;0:0;kotlinx.serialization.KSerializer<0:0>;kotlin.Function1<kotlin.String,0:1>;kotlin.Long?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?, #B1: kotlin/Any?> post(kotlin/String, #A1, kotlinx.serialization/KSerializer<#A1>, kotlin/Function1<kotlin/String, #B1>, kotlin/Long? = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult<#B1> // com.droidunplugged.kmp_platform_kit.core/ApiClient.post|post(kotlin.String;0:0;kotlinx.serialization.KSerializer<0:0>;kotlin.Function1<kotlin.String,0:1>;kotlin.Long?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?, #B1: kotlin/Any?> put(kotlin/String, #A1, kotlinx.serialization/KSerializer<#A1>, kotlin/Function1<kotlin/String, #B1>, kotlin/Long? = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult<#B1> // com.droidunplugged.kmp_platform_kit.core/ApiClient.put|put(kotlin.String;0:0;kotlinx.serialization.KSerializer<0:0>;kotlin.Function1<kotlin.String,0:1>;kotlin.Long?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> delete(kotlin/String, kotlin/Function1<kotlin/String, #A1>, kotlin/Long? = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult<#A1> // com.droidunplugged.kmp_platform_kit.core/ApiClient.delete|delete(kotlin.String;kotlin.Function1<kotlin.String,0:0>;kotlin.Long?){0§<kotlin.Any?>}[0]
+    abstract suspend fun <#A1: kotlin/Any?> get(kotlin/String, kotlin/Function1<kotlin/String, #A1>, com.droidunplugged.kmp_platform_kit.core/CachePolicy = ..., kotlin/Long? = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult<#A1> // com.droidunplugged.kmp_platform_kit.core/ApiClient.get|get(kotlin.String;kotlin.Function1<kotlin.String,0:0>;com.droidunplugged.kmp_platform_kit.core.CachePolicy;kotlin.Long?){0§<kotlin.Any?>}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.core/SDKPlugin { // com.droidunplugged.kmp_platform_kit.core/SDKPlugin|null[0]
+    abstract val id // com.droidunplugged.kmp_platform_kit.core/SDKPlugin.id|{}id[0]
+        abstract fun <get-id>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKPlugin.id.<get-id>|<get-id>(){}[0]
+    abstract val koinModule // com.droidunplugged.kmp_platform_kit.core/SDKPlugin.koinModule|{}koinModule[0]
+        abstract fun <get-koinModule>(): org.koin.core.module/Module // com.droidunplugged.kmp_platform_kit.core/SDKPlugin.koinModule.<get-koinModule>|<get-koinModule>(){}[0]
+
+    open fun onSDKInitialized() // com.droidunplugged.kmp_platform_kit.core/SDKPlugin.onSDKInitialized|onSDKInitialized(){}[0]
+    open fun onSDKReset() // com.droidunplugged.kmp_platform_kit.core/SDKPlugin.onSDKReset|onSDKReset(){}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.core/SDKTelemetry { // com.droidunplugged.kmp_platform_kit.core/SDKTelemetry|null[0]
+    abstract fun recordApiCall(kotlin/String, kotlin/Long, kotlin/Int, kotlin/Int) // com.droidunplugged.kmp_platform_kit.core/SDKTelemetry.recordApiCall|recordApiCall(kotlin.String;kotlin.Long;kotlin.Int;kotlin.Int){}[0]
+    abstract fun recordError(com.droidunplugged.kmp_platform_kit.core/ErrorType, kotlin/String?, kotlin/String) // com.droidunplugged.kmp_platform_kit.core/SDKTelemetry.recordError|recordError(com.droidunplugged.kmp_platform_kit.core.ErrorType;kotlin.String?;kotlin.String){}[0]
+    abstract fun recordSdkEvent(com.droidunplugged.kmp_platform_kit.core/SDKEvent, kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core/SDKTelemetry.recordSdkEvent|recordSdkEvent(com.droidunplugged.kmp_platform_kit.core.SDKEvent;kotlin.String?){}[0]
+}
+
+abstract interface com.droidunplugged.kmp_platform_kit.shared.utils/Logger { // com.droidunplugged.kmp_platform_kit.shared.utils/Logger|null[0]
+    abstract fun d(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.shared.utils/Logger.d|d(kotlin.String;kotlin.String){}[0]
+    abstract fun e(kotlin/String, kotlin/String, kotlin/Throwable? = ...) // com.droidunplugged.kmp_platform_kit.shared.utils/Logger.e|e(kotlin.String;kotlin.String;kotlin.Throwable?){}[0]
+    abstract fun i(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.shared.utils/Logger.i|i(kotlin.String;kotlin.String){}[0]
+    abstract fun w(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.shared.utils/Logger.w|w(kotlin.String;kotlin.String){}[0]
+}
+
+abstract class com.droidunplugged.kmp_platform_kit.core/BaseFacade : com.droidunplugged.kmp_platform_kit.core.di/SdkKoinComponent { // com.droidunplugged.kmp_platform_kit.core/BaseFacade|null[0]
+    constructor <init>() // com.droidunplugged.kmp_platform_kit.core/BaseFacade.<init>|<init>(){}[0]
+
+    abstract val tag // com.droidunplugged.kmp_platform_kit.core/BaseFacade.tag|{}tag[0]
+        abstract fun <get-tag>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/BaseFacade.tag.<get-tag>|<get-tag>(){}[0]
+    final val log // com.droidunplugged.kmp_platform_kit.core/BaseFacade.log|{}log[0]
+        final fun <get-log>(): com.droidunplugged.kmp_platform_kit.shared.utils/Logger // com.droidunplugged.kmp_platform_kit.core/BaseFacade.log.<get-log>|<get-log>(){}[0]
+
+    final fun requireInitialized() // com.droidunplugged.kmp_platform_kit.core/BaseFacade.requireInitialized|requireInitialized(){}[0]
+}
+
+final class <#A: kotlin/Any?> com.droidunplugged.kmp_platform_kit.core.paging/Page { // com.droidunplugged.kmp_platform_kit.core.paging/Page|null[0]
+    constructor <init>(kotlin.collections/List<#A>, com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo) // com.droidunplugged.kmp_platform_kit.core.paging/Page.<init>|<init>(kotlin.collections.List<1:0>;com.droidunplugged.kmp_platform_kit.shared.models.PaginationInfo){}[0]
+
+    final val items // com.droidunplugged.kmp_platform_kit.core.paging/Page.items|{}items[0]
+        final fun <get-items>(): kotlin.collections/List<#A> // com.droidunplugged.kmp_platform_kit.core.paging/Page.items.<get-items>|<get-items>(){}[0]
+    final val pagination // com.droidunplugged.kmp_platform_kit.core.paging/Page.pagination|{}pagination[0]
+        final fun <get-pagination>(): com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo // com.droidunplugged.kmp_platform_kit.core.paging/Page.pagination.<get-pagination>|<get-pagination>(){}[0]
+
+    final fun component1(): kotlin.collections/List<#A> // com.droidunplugged.kmp_platform_kit.core.paging/Page.component1|component1(){}[0]
+    final fun component2(): com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo // com.droidunplugged.kmp_platform_kit.core.paging/Page.component2|component2(){}[0]
+    final fun copy(kotlin.collections/List<#A> = ..., com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo = ...): com.droidunplugged.kmp_platform_kit.core.paging/Page<#A> // com.droidunplugged.kmp_platform_kit.core.paging/Page.copy|copy(kotlin.collections.List<1:0>;com.droidunplugged.kmp_platform_kit.shared.models.PaginationInfo){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/Page.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/Page.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/Page.toString|toString(){}[0]
+}
+
+final class <#A: kotlin/Any?> com.droidunplugged.kmp_platform_kit.core.paging/SdkPager { // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager|null[0]
+    constructor <init>(kotlin/Int = ..., kotlinx.coroutines/CoroutineScope? = ..., kotlin.coroutines/SuspendFunction2<kotlin/Int, kotlin/Int, com.droidunplugged.kmp_platform_kit.core/ApiResult<com.droidunplugged.kmp_platform_kit.core.paging/Page<#A>>>) // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager.<init>|<init>(kotlin.Int;kotlinx.coroutines.CoroutineScope?;kotlin.coroutines.SuspendFunction2<kotlin.Int,kotlin.Int,com.droidunplugged.kmp_platform_kit.core.ApiResult<com.droidunplugged.kmp_platform_kit.core.paging.Page<1:0>>>){}[0]
+
+    final val state // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager.state|{}state[0]
+        final fun <get-state>(): kotlinx.coroutines.flow/StateFlow<com.droidunplugged.kmp_platform_kit.core.paging/PagerState<#A>> // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager.state.<get-state>|<get-state>(){}[0]
+
+    final fun cancel() // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager.cancel|cancel(){}[0]
+    final fun loadNextPage() // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager.loadNextPage|loadNextPage(){}[0]
+    final fun refresh() // com.droidunplugged.kmp_platform_kit.core.paging/SdkPager.refresh|refresh(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig { // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig|null[0]
+    constructor <init>(kotlin.time/Duration = ..., kotlin/Int = ..., kotlin/Long = ...) // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.<init>|<init>(kotlin.time.Duration;kotlin.Int;kotlin.Long){}[0]
+
+    final val proactiveRefreshBuffer // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.proactiveRefreshBuffer|{}proactiveRefreshBuffer[0]
+        final fun <get-proactiveRefreshBuffer>(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.proactiveRefreshBuffer.<get-proactiveRefreshBuffer>|<get-proactiveRefreshBuffer>(){}[0]
+    final val refreshMaxRetries // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.refreshMaxRetries|{}refreshMaxRetries[0]
+        final fun <get-refreshMaxRetries>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.refreshMaxRetries.<get-refreshMaxRetries>|<get-refreshMaxRetries>(){}[0]
+    final val refreshRetryBackoffMs // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.refreshRetryBackoffMs|{}refreshRetryBackoffMs[0]
+        final fun <get-refreshRetryBackoffMs>(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.refreshRetryBackoffMs.<get-refreshRetryBackoffMs>|<get-refreshRetryBackoffMs>(){}[0]
+
+    final fun component1(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.component2|component2(){}[0]
+    final fun component3(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.component3|component3(){}[0]
+    final fun copy(kotlin.time/Duration = ..., kotlin/Int = ..., kotlin/Long = ...): com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.copy|copy(kotlin.time.Duration;kotlin.Int;kotlin.Long){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.auth/TokenConfig.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker { // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker|null[0]
+    constructor <init>(kotlin/String, com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig = ...) // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.<init>|<init>(kotlin.String;com.droidunplugged.kmp_platform_kit.core.circuit.CircuitBreakerConfig){}[0]
+
+    final val name // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.name.<get-name>|<get-name>(){}[0]
+    final val state // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.state|{}state[0]
+        final fun <get-state>(): kotlinx.coroutines.flow/StateFlow<com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State> // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.state.<get-state>|<get-state>(){}[0]
+
+    final suspend fun <#A1: kotlin/Any?> execute(kotlin.coroutines/SuspendFunction0<#A1>): #A1 // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.execute|execute(kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun reset() // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.reset|reset(){}[0]
+
+    final enum class State : kotlin/Enum<com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State> { // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State|null[0]
+        enum entry CLOSED // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.CLOSED|null[0]
+        enum entry HALF_OPEN // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.HALF_OPEN|null[0]
+        enum entry OPEN // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.OPEN|null[0]
+
+        final val entries // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State> // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State> // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreaker.State.values|values#static(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig { // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin/Int = ..., kotlin.time/Duration = ...) // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.time.Duration){}[0]
+
+    final val failureThreshold // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.failureThreshold|{}failureThreshold[0]
+        final fun <get-failureThreshold>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.failureThreshold.<get-failureThreshold>|<get-failureThreshold>(){}[0]
+    final val openDuration // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.openDuration|{}openDuration[0]
+        final fun <get-openDuration>(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.openDuration.<get-openDuration>|<get-openDuration>(){}[0]
+    final val successThreshold // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.successThreshold|{}successThreshold[0]
+        final fun <get-successThreshold>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.successThreshold.<get-successThreshold>|<get-successThreshold>(){}[0]
+
+    final fun component1(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.component2|component2(){}[0]
+    final fun component3(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.component3|component3(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin.time/Duration = ...): com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.copy|copy(kotlin.Int;kotlin.Int;kotlin.time.Duration){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException : kotlin/Exception { // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException|null[0]
+    constructor <init>(kotlin/String, kotlin/Long) // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException.<init>|<init>(kotlin.String;kotlin.Long){}[0]
+
+    final val endpoint // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException.endpoint|{}endpoint[0]
+        final fun <get-endpoint>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException.endpoint.<get-endpoint>|<get-endpoint>(){}[0]
+    final val retryAfterMs // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException.retryAfterMs|{}retryAfterMs[0]
+        final fun <get-retryAfterMs>(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.circuit/CircuitOpenException.retryAfterMs.<get-retryAfterMs>|<get-retryAfterMs>(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment { // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/String, com.droidunplugged.kmp_platform_kit.core/SslPinConfig? = ...) // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.String;com.droidunplugged.kmp_platform_kit.core.SslPinConfig?){}[0]
+
+    final val apiKey // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.apiKey|{}apiKey[0]
+        final fun <get-apiKey>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.apiKey.<get-apiKey>|<get-apiKey>(){}[0]
+    final val baseUrl // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.baseUrl|{}baseUrl[0]
+        final fun <get-baseUrl>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.baseUrl.<get-baseUrl>|<get-baseUrl>(){}[0]
+    final val clientId // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.clientId|{}clientId[0]
+        final fun <get-clientId>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.clientId.<get-clientId>|<get-clientId>(){}[0]
+    final val id // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.id|{}id[0]
+        final fun <get-id>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.id.<get-id>|<get-id>(){}[0]
+    final val sslPins // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.sslPins|{}sslPins[0]
+        final fun <get-sslPins>(): com.droidunplugged.kmp_platform_kit.core/SslPinConfig? // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.sslPins.<get-sslPins>|<get-sslPins>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.component2|component2(){}[0]
+    final fun component3(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.component3|component3(){}[0]
+    final fun component4(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.component4|component4(){}[0]
+    final fun component5(): com.droidunplugged.kmp_platform_kit.core/SslPinConfig? // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.component5|component5(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., com.droidunplugged.kmp_platform_kit.core/SslPinConfig? = ...): com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.String;com.droidunplugged.kmp_platform_kit.core.SslPinConfig?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig { // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig|null[0]
+    constructor <init>(kotlin.collections/Map<kotlin/String, kotlin/Boolean> = ..., com.droidunplugged.kmp_platform_kit.core/RetryConfig? = ..., kotlin.time/Duration? = ..., kotlin/String? = ..., kotlin.time/Duration? = ...) // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.<init>|<init>(kotlin.collections.Map<kotlin.String,kotlin.Boolean>;com.droidunplugged.kmp_platform_kit.core.RetryConfig?;kotlin.time.Duration?;kotlin.String?;kotlin.time.Duration?){}[0]
+
+    final val cacheMaxAge // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.cacheMaxAge|{}cacheMaxAge[0]
+        final fun <get-cacheMaxAge>(): kotlin.time/Duration? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.cacheMaxAge.<get-cacheMaxAge>|<get-cacheMaxAge>(){}[0]
+    final val featureFlags // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.featureFlags|{}featureFlags[0]
+        final fun <get-featureFlags>(): kotlin.collections/Map<kotlin/String, kotlin/Boolean> // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.featureFlags.<get-featureFlags>|<get-featureFlags>(){}[0]
+    final val isInMaintenance // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.isInMaintenance|{}isInMaintenance[0]
+        final fun <get-isInMaintenance>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.isInMaintenance.<get-isInMaintenance>|<get-isInMaintenance>(){}[0]
+    final val maintenanceMessage // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.maintenanceMessage|{}maintenanceMessage[0]
+        final fun <get-maintenanceMessage>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.maintenanceMessage.<get-maintenanceMessage>|<get-maintenanceMessage>(){}[0]
+    final val refreshInterval // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.refreshInterval|{}refreshInterval[0]
+        final fun <get-refreshInterval>(): kotlin.time/Duration? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.refreshInterval.<get-refreshInterval>|<get-refreshInterval>(){}[0]
+    final val retryConfig // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.retryConfig|{}retryConfig[0]
+        final fun <get-retryConfig>(): com.droidunplugged.kmp_platform_kit.core/RetryConfig? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.retryConfig.<get-retryConfig>|<get-retryConfig>(){}[0]
+
+    final fun component1(): kotlin.collections/Map<kotlin/String, kotlin/Boolean> // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.component1|component1(){}[0]
+    final fun component2(): com.droidunplugged.kmp_platform_kit.core/RetryConfig? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.component2|component2(){}[0]
+    final fun component3(): kotlin.time/Duration? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.component4|component4(){}[0]
+    final fun component5(): kotlin.time/Duration? // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.component5|component5(){}[0]
+    final fun copy(kotlin.collections/Map<kotlin/String, kotlin/Boolean> = ..., com.droidunplugged.kmp_platform_kit.core/RetryConfig? = ..., kotlin.time/Duration? = ..., kotlin/String? = ..., kotlin.time/Duration? = ...): com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.copy|copy(kotlin.collections.Map<kotlin.String,kotlin.Boolean>;com.droidunplugged.kmp_platform_kit.core.RetryConfig?;kotlin.time.Duration?;kotlin.String?;kotlin.time.Duration?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.hashCode|hashCode(){}[0]
+    final fun isFeatureEnabled(kotlin/String): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.isFeatureEnabled|isFeatureEnabled(kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfig.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest { // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin.collections/MutableMap<kotlin/String, kotlin/String> = ..., kotlin.collections/MutableMap<kotlin/String, kotlin/String> = ...) // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.MutableMap<kotlin.String,kotlin.String>;kotlin.collections.MutableMap<kotlin.String,kotlin.String>){}[0]
+
+    final val headers // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.headers|{}headers[0]
+        final fun <get-headers>(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.headers.<get-headers>|<get-headers>(){}[0]
+    final val method // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.method|{}method[0]
+        final fun <get-method>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.method.<get-method>|<get-method>(){}[0]
+    final val queryParams // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.queryParams|{}queryParams[0]
+        final fun <get-queryParams>(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.queryParams.<get-queryParams>|<get-queryParams>(){}[0]
+    final val url // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.url|{}url[0]
+        final fun <get-url>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.url.<get-url>|<get-url>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin.collections/MutableMap<kotlin/String, kotlin/String> = ..., kotlin.collections/MutableMap<kotlin/String, kotlin/String> = ...): com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.copy|copy(kotlin.String;kotlin.String;kotlin.collections.MutableMap<kotlin.String,kotlin.String>;kotlin.collections.MutableMap<kotlin.String,kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.toString|toString(){}[0]
+    final fun withHeader(kotlin/String, kotlin/String): com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.withHeader|withHeader(kotlin.String;kotlin.String){}[0]
+    final fun withQueryParam(kotlin/String, kotlin/String): com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.withQueryParam|withQueryParam(kotlin.String;kotlin.String){}[0]
+    final fun withoutHeader(kotlin/String): com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkMutableRequest.withoutHeader|withoutHeader(kotlin.String){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse { // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/Int, kotlin.collections/Map<kotlin/String, kotlin/String>, kotlin/Long, kotlin/Boolean = ...) // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.<init>|<init>(kotlin.String;kotlin.String;kotlin.Int;kotlin.collections.Map<kotlin.String,kotlin.String>;kotlin.Long;kotlin.Boolean){}[0]
+
+    final val cacheHit // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.cacheHit|{}cacheHit[0]
+        final fun <get-cacheHit>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.cacheHit.<get-cacheHit>|<get-cacheHit>(){}[0]
+    final val durationMs // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.durationMs|{}durationMs[0]
+        final fun <get-durationMs>(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.durationMs.<get-durationMs>|<get-durationMs>(){}[0]
+    final val headers // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.headers|{}headers[0]
+        final fun <get-headers>(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.headers.<get-headers>|<get-headers>(){}[0]
+    final val method // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.method|{}method[0]
+        final fun <get-method>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.method.<get-method>|<get-method>(){}[0]
+    final val statusCode // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.statusCode|{}statusCode[0]
+        final fun <get-statusCode>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.statusCode.<get-statusCode>|<get-statusCode>(){}[0]
+    final val url // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.url|{}url[0]
+        final fun <get-url>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.url.<get-url>|<get-url>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.component4|component4(){}[0]
+    final fun component5(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.component6|component6(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Int = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ..., kotlin/Long = ..., kotlin/Boolean = ...): com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.copy|copy(kotlin.String;kotlin.String;kotlin.Int;kotlin.collections.Map<kotlin.String,kotlin.String>;kotlin.Long;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.interceptor/SdkResponse.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext { // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?){}[0]
+
+    final val parentSpanId // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.parentSpanId|{}parentSpanId[0]
+        final fun <get-parentSpanId>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.parentSpanId.<get-parentSpanId>|<get-parentSpanId>(){}[0]
+    final val spanId // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.spanId|{}spanId[0]
+        final fun <get-spanId>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.spanId.<get-spanId>|<get-spanId>(){}[0]
+    final val traceId // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.traceId|{}traceId[0]
+        final fun <get-traceId>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.traceId.<get-traceId>|<get-traceId>(){}[0]
+    final val w3cTraceparent // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.w3cTraceparent|{}w3cTraceparent[0]
+        final fun <get-w3cTraceparent>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.w3cTraceparent.<get-w3cTraceparent>|<get-w3cTraceparent>(){}[0]
+
+    final fun child(): com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.child|child(){}[0]
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.copy|copy(kotlin.String;kotlin.String;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.toString|toString(){}[0]
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.Companion|null[0]
+        final fun new(): com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext // com.droidunplugged.kmp_platform_kit.core.tracing/SdkTraceContext.Companion.new|new(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.core/CachePolicy { // com.droidunplugged.kmp_platform_kit.core/CachePolicy|null[0]
+    constructor <init>(com.droidunplugged.kmp_platform_kit.core/CacheStrategy = ..., kotlin.time/Duration = ..., kotlin/Boolean = ...) // com.droidunplugged.kmp_platform_kit.core/CachePolicy.<init>|<init>(com.droidunplugged.kmp_platform_kit.core.CacheStrategy;kotlin.time.Duration;kotlin.Boolean){}[0]
+
+    final val maxAge // com.droidunplugged.kmp_platform_kit.core/CachePolicy.maxAge|{}maxAge[0]
+        final fun <get-maxAge>(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core/CachePolicy.maxAge.<get-maxAge>|<get-maxAge>(){}[0]
+    final val staleWhileRevalidate // com.droidunplugged.kmp_platform_kit.core/CachePolicy.staleWhileRevalidate|{}staleWhileRevalidate[0]
+        final fun <get-staleWhileRevalidate>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/CachePolicy.staleWhileRevalidate.<get-staleWhileRevalidate>|<get-staleWhileRevalidate>(){}[0]
+    final val strategy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.strategy|{}strategy[0]
+        final fun <get-strategy>(): com.droidunplugged.kmp_platform_kit.core/CacheStrategy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.strategy.<get-strategy>|<get-strategy>(){}[0]
+
+    final fun component1(): com.droidunplugged.kmp_platform_kit.core/CacheStrategy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.component1|component1(){}[0]
+    final fun component2(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core/CachePolicy.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/CachePolicy.component3|component3(){}[0]
+    final fun copy(com.droidunplugged.kmp_platform_kit.core/CacheStrategy = ..., kotlin.time/Duration = ..., kotlin/Boolean = ...): com.droidunplugged.kmp_platform_kit.core/CachePolicy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.copy|copy(com.droidunplugged.kmp_platform_kit.core.CacheStrategy;kotlin.time.Duration;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/CachePolicy.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/CachePolicy.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/CachePolicy.toString|toString(){}[0]
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion|null[0]
+        final val CACHE_FIRST_5MIN // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.CACHE_FIRST_5MIN|{}CACHE_FIRST_5MIN[0]
+            final fun <get-CACHE_FIRST_5MIN>(): com.droidunplugged.kmp_platform_kit.core/CachePolicy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.CACHE_FIRST_5MIN.<get-CACHE_FIRST_5MIN>|<get-CACHE_FIRST_5MIN>(){}[0]
+        final val DEFAULT // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.DEFAULT|{}DEFAULT[0]
+            final fun <get-DEFAULT>(): com.droidunplugged.kmp_platform_kit.core/CachePolicy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.DEFAULT.<get-DEFAULT>|<get-DEFAULT>(){}[0]
+        final val DEFAULT_MAX_AGE // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.DEFAULT_MAX_AGE|{}DEFAULT_MAX_AGE[0]
+            final fun <get-DEFAULT_MAX_AGE>(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.DEFAULT_MAX_AGE.<get-DEFAULT_MAX_AGE>|<get-DEFAULT_MAX_AGE>(){}[0]
+        final val NO_CACHE // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.NO_CACHE|{}NO_CACHE[0]
+            final fun <get-NO_CACHE>(): com.droidunplugged.kmp_platform_kit.core/CachePolicy // com.droidunplugged.kmp_platform_kit.core/CachePolicy.Companion.NO_CACHE.<get-NO_CACHE>|<get-NO_CACHE>(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.core/RetryConfig { // com.droidunplugged.kmp_platform_kit.core/RetryConfig|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin/Long = ...) // com.droidunplugged.kmp_platform_kit.core/RetryConfig.<init>|<init>(kotlin.Int;kotlin.Long){}[0]
+
+    final val initialBackoffMs // com.droidunplugged.kmp_platform_kit.core/RetryConfig.initialBackoffMs|{}initialBackoffMs[0]
+        final fun <get-initialBackoffMs>(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core/RetryConfig.initialBackoffMs.<get-initialBackoffMs>|<get-initialBackoffMs>(){}[0]
+    final val maxAttempts // com.droidunplugged.kmp_platform_kit.core/RetryConfig.maxAttempts|{}maxAttempts[0]
+        final fun <get-maxAttempts>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/RetryConfig.maxAttempts.<get-maxAttempts>|<get-maxAttempts>(){}[0]
+
+    final fun component1(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/RetryConfig.component1|component1(){}[0]
+    final fun component2(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core/RetryConfig.component2|component2(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Long = ...): com.droidunplugged.kmp_platform_kit.core/RetryConfig // com.droidunplugged.kmp_platform_kit.core/RetryConfig.copy|copy(kotlin.Int;kotlin.Long){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/RetryConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/RetryConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/RetryConfig.toString|toString(){}[0]
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion|null[0]
+        final const val DEFAULT_INITIAL_BACKOFF_MS // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion.DEFAULT_INITIAL_BACKOFF_MS|{}DEFAULT_INITIAL_BACKOFF_MS[0]
+            final fun <get-DEFAULT_INITIAL_BACKOFF_MS>(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion.DEFAULT_INITIAL_BACKOFF_MS.<get-DEFAULT_INITIAL_BACKOFF_MS>|<get-DEFAULT_INITIAL_BACKOFF_MS>(){}[0]
+        final const val DEFAULT_MAX_ATTEMPTS // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion.DEFAULT_MAX_ATTEMPTS|{}DEFAULT_MAX_ATTEMPTS[0]
+            final fun <get-DEFAULT_MAX_ATTEMPTS>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion.DEFAULT_MAX_ATTEMPTS.<get-DEFAULT_MAX_ATTEMPTS>|<get-DEFAULT_MAX_ATTEMPTS>(){}[0]
+
+        final val NO_RETRY // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion.NO_RETRY|{}NO_RETRY[0]
+            final fun <get-NO_RETRY>(): com.droidunplugged.kmp_platform_kit.core/RetryConfig // com.droidunplugged.kmp_platform_kit.core/RetryConfig.Companion.NO_RETRY.<get-NO_RETRY>|<get-NO_RETRY>(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.core/SDKCredentials { // com.droidunplugged.kmp_platform_kit.core/SDKCredentials|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.String){}[0]
+
+    final val apiGuid // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.apiGuid|{}apiGuid[0]
+        final fun <get-apiGuid>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.apiGuid.<get-apiGuid>|<get-apiGuid>(){}[0]
+    final val apiKey // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.apiKey|{}apiKey[0]
+        final fun <get-apiKey>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.apiKey.<get-apiKey>|<get-apiKey>(){}[0]
+    final val authToken // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.authToken|{}authToken[0]
+        final fun <get-authToken>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.authToken.<get-authToken>|<get-authToken>(){}[0]
+    final val baseUrl // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.baseUrl|{}baseUrl[0]
+        final fun <get-baseUrl>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.baseUrl.<get-baseUrl>|<get-baseUrl>(){}[0]
+    final val clientId // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.clientId|{}clientId[0]
+        final fun <get-clientId>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.clientId.<get-clientId>|<get-clientId>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKCredentials.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core/SdkNotConfiguredException : kotlin/Exception { // com.droidunplugged.kmp_platform_kit.core/SdkNotConfiguredException|null[0]
+    constructor <init>(kotlin/String) // com.droidunplugged.kmp_platform_kit.core/SdkNotConfiguredException.<init>|<init>(kotlin.String){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.core/SslPinConfig { // com.droidunplugged.kmp_platform_kit.core/SslPinConfig|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/List<kotlin/String>) // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.<init>|<init>(kotlin.String;kotlin.collections.List<kotlin.String>){}[0]
+
+    final val hostname // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.hostname|{}hostname[0]
+        final fun <get-hostname>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.hostname.<get-hostname>|<get-hostname>(){}[0]
+    final val pins // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.pins|{}pins[0]
+        final fun <get-pins>(): kotlin.collections/List<kotlin/String> // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.pins.<get-pins>|<get-pins>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<kotlin/String> // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/List<kotlin/String> = ...): com.droidunplugged.kmp_platform_kit.core/SslPinConfig // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.copy|copy(kotlin.String;kotlin.collections.List<kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SslPinConfig.toString|toString(){}[0]
+}
+
+final class com.droidunplugged.kmp_platform_kit.features.catalog.models/Product { // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/Double, kotlin/String) // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.Double;kotlin.String){}[0]
+
+    final val description // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.description|{}description[0]
+        final fun <get-description>(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.description.<get-description>|<get-description>(){}[0]
+    final val id // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.id|{}id[0]
+        final fun <get-id>(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.id.<get-id>|<get-id>(){}[0]
+    final val imageUrl // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.imageUrl|{}imageUrl[0]
+        final fun <get-imageUrl>(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.imageUrl.<get-imageUrl>|<get-imageUrl>(){}[0]
+    final val name // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.name.<get-name>|<get-name>(){}[0]
+    final val price // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.price|{}price[0]
+        final fun <get-price>(): kotlin/Double // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.price.<get-price>|<get-price>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.component2|component2(){}[0]
+    final fun component3(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.component3|component3(){}[0]
+    final fun component4(): kotlin/Double // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.component4|component4(){}[0]
+    final fun component5(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.component5|component5(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/Double = ..., kotlin/String = ...): com.droidunplugged.kmp_platform_kit.features.catalog.models/Product // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.Double;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<com.droidunplugged.kmp_platform_kit.features.catalog.models/Product> { // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.$serializer|null[0]
+        final val descriptor // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): com.droidunplugged.kmp_platform_kit.features.catalog.models/Product // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, com.droidunplugged.kmp_platform_kit.features.catalog.models/Product) // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.droidunplugged.kmp_platform_kit.features.catalog.models.Product){}[0]
+    }
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<com.droidunplugged.kmp_platform_kit.features.catalog.models/Product> // com.droidunplugged.kmp_platform_kit.features.catalog.models/Product.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse { // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse|null[0]
+    constructor <init>(kotlin/String = ..., com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo? = ...) // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.<init>|<init>(kotlin.String;com.droidunplugged.kmp_platform_kit.shared.models.ErrorInfo?){}[0]
+
+    final val error // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.error|{}error[0]
+        final fun <get-error>(): com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo? // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.error.<get-error>|<get-error>(){}[0]
+    final val errorMessage // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val isSuccess // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.isSuccess|{}isSuccess[0]
+        final fun <get-isSuccess>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.isSuccess.<get-isSuccess>|<get-isSuccess>(){}[0]
+    final val status // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.status|{}status[0]
+        final fun <get-status>(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.status.<get-status>|<get-status>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.component1|component1(){}[0]
+    final fun component2(): com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo? // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo? = ...): com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.copy|copy(kotlin.String;com.droidunplugged.kmp_platform_kit.shared.models.ErrorInfo?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse> { // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.$serializer|null[0]
+        final val descriptor // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse) // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.droidunplugged.kmp_platform_kit.shared.models.BaseApiResponse){}[0]
+    }
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse> // com.droidunplugged.kmp_platform_kit.shared.models/BaseApiResponse.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail { // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail|null[0]
+    constructor <init>(kotlin/String = ..., kotlin/String = ...) // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+    final val code // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.code|{}code[0]
+        final fun <get-code>(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.code.<get-code>|<get-code>(){}[0]
+    final val message // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.message|{}message[0]
+        final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.message.<get-message>|<get-message>(){}[0]
+
+    final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ...): com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.copy|copy(kotlin.String;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail> { // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.$serializer|null[0]
+        final val descriptor // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail) // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.droidunplugged.kmp_platform_kit.shared.models.ErrorDetail){}[0]
+    }
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail> // com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo { // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo|null[0]
+    constructor <init>(kotlin.collections/List<com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail> = ...) // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.<init>|<init>(kotlin.collections.List<com.droidunplugged.kmp_platform_kit.shared.models.ErrorDetail>){}[0]
+
+    final val errorDetails // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.errorDetails|{}errorDetails[0]
+        final fun <get-errorDetails>(): kotlin.collections/List<com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail> // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.errorDetails.<get-errorDetails>|<get-errorDetails>(){}[0]
+
+    final fun component1(): kotlin.collections/List<com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail> // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<com.droidunplugged.kmp_platform_kit.shared.models/ErrorDetail> = ...): com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.copy|copy(kotlin.collections.List<com.droidunplugged.kmp_platform_kit.shared.models.ErrorDetail>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo> { // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.$serializer|null[0]
+        final val descriptor // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo) // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.droidunplugged.kmp_platform_kit.shared.models.ErrorInfo){}[0]
+    }
+
+    final object Companion { // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.Companion|null[0]
+        final val $childSerializers // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo> // com.droidunplugged.kmp_platform_kit.shared.models/ErrorInfo.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo { // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Boolean = ..., kotlin/Boolean = ...) // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Boolean){}[0]
+
+    final val currentPage // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.currentPage|{}currentPage[0]
+        final fun <get-currentPage>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.currentPage.<get-currentPage>|<get-currentPage>(){}[0]
+    final val hasNext // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.hasNext|{}hasNext[0]
+        final fun <get-hasNext>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.hasNext.<get-hasNext>|<get-hasNext>(){}[0]
+    final val hasPrevious // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.hasPrevious|{}hasPrevious[0]
+        final fun <get-hasPrevious>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.hasPrevious.<get-hasPrevious>|<get-hasPrevious>(){}[0]
+    final val isFirstPage // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.isFirstPage|{}isFirstPage[0]
+        final fun <get-isFirstPage>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.isFirstPage.<get-isFirstPage>|<get-isFirstPage>(){}[0]
+    final val isLastPage // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.isLastPage|{}isLastPage[0]
+        final fun <get-isLastPage>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.isLastPage.<get-isLastPage>|<get-isLastPage>(){}[0]
+    final val isPaginated // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.isPaginated|{}isPaginated[0]
+        final fun <get-isPaginated>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.isPaginated.<get-isPaginated>|<get-isPaginated>(){}[0]
+    final val pageSize // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.pageSize|{}pageSize[0]
+        final fun <get-pageSize>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.pageSize.<get-pageSize>|<get-pageSize>(){}[0]
+    final val totalElements // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.totalElements|{}totalElements[0]
+        final fun <get-totalElements>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.totalElements.<get-totalElements>|<get-totalElements>(){}[0]
+    final val totalPages // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.totalPages|{}totalPages[0]
+        final fun <get-totalPages>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.totalPages.<get-totalPages>|<get-totalPages>(){}[0]
+
+    final fun component1(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.component3|component3(){}[0]
+    final fun component4(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.component4|component4(){}[0]
+    final fun component5(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.component6|component6(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.copy|copy(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo.toString|toString(){}[0]
+}
+
+open class com.droidunplugged.kmp_platform_kit.features.catalog.remote/CatalogApi { // com.droidunplugged.kmp_platform_kit.features.catalog.remote/CatalogApi|null[0]
+    constructor <init>(com.droidunplugged.kmp_platform_kit.core/ApiClient) // com.droidunplugged.kmp_platform_kit.features.catalog.remote/CatalogApi.<init>|<init>(com.droidunplugged.kmp_platform_kit.core.ApiClient){}[0]
+
+    open suspend fun getProductDetails(kotlin/String): com.droidunplugged.kmp_platform_kit.core/ApiResult<com.droidunplugged.kmp_platform_kit.features.catalog.models/Product> // com.droidunplugged.kmp_platform_kit.features.catalog.remote/CatalogApi.getProductDetails|getProductDetails(kotlin.String){}[0]
+    open suspend fun getProducts(): com.droidunplugged.kmp_platform_kit.core/ApiResult<kotlin.collections/List<com.droidunplugged.kmp_platform_kit.features.catalog.models/Product>> // com.droidunplugged.kmp_platform_kit.features.catalog.remote/CatalogApi.getProducts|getProducts(){}[0]
+}
+
+sealed class <#A: out kotlin/Any?> com.droidunplugged.kmp_platform_kit.core.paging/PagerState { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState|null[0]
+    final class <#A1: kotlin/Any?> Complete : com.droidunplugged.kmp_platform_kit.core.paging/PagerState<#A1> { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete|null[0]
+        constructor <init>(kotlin.collections/List<#A1>) // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.<init>|<init>(kotlin.collections.List<1:0>){}[0]
+
+        final val items // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.items|{}items[0]
+            final fun <get-items>(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.items.<get-items>|<get-items>(){}[0]
+
+        final fun component1(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.component1|component1(){}[0]
+        final fun copy(kotlin.collections/List<#A1> = ...): com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.copy|copy(kotlin.collections.List<1:0>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Complete.toString|toString(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> Error : com.droidunplugged.kmp_platform_kit.core.paging/PagerState<#A1> { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/List<#A1> = ..., kotlin/Boolean = ...) // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.<init>|<init>(kotlin.String;kotlin.collections.List<1:0>;kotlin.Boolean){}[0]
+
+        final val error // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.error|{}error[0]
+            final fun <get-error>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.error.<get-error>|<get-error>(){}[0]
+        final val isNetworkError // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.isNetworkError|{}isNetworkError[0]
+            final fun <get-isNetworkError>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.isNetworkError.<get-isNetworkError>|<get-isNetworkError>(){}[0]
+        final val items // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.items|{}items[0]
+            final fun <get-items>(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.items.<get-items>|<get-items>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.component2|component2(){}[0]
+        final fun component3(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin.collections/List<#A1> = ..., kotlin/Boolean = ...): com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.copy|copy(kotlin.String;kotlin.collections.List<1:0>;kotlin.Boolean){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Error.toString|toString(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> LoadingMore : com.droidunplugged.kmp_platform_kit.core.paging/PagerState<#A1> { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore|null[0]
+        constructor <init>(kotlin.collections/List<#A1>) // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.<init>|<init>(kotlin.collections.List<1:0>){}[0]
+
+        final val items // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.items|{}items[0]
+            final fun <get-items>(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.items.<get-items>|<get-items>(){}[0]
+
+        final fun component1(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.component1|component1(){}[0]
+        final fun copy(kotlin.collections/List<#A1> = ...): com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.copy|copy(kotlin.collections.List<1:0>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingMore.toString|toString(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> Success : com.droidunplugged.kmp_platform_kit.core.paging/PagerState<#A1> { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success|null[0]
+        constructor <init>(kotlin.collections/List<#A1>, com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo) // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.<init>|<init>(kotlin.collections.List<1:0>;com.droidunplugged.kmp_platform_kit.shared.models.PaginationInfo){}[0]
+
+        final val items // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.items|{}items[0]
+            final fun <get-items>(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.items.<get-items>|<get-items>(){}[0]
+        final val pagination // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.pagination|{}pagination[0]
+            final fun <get-pagination>(): com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.pagination.<get-pagination>|<get-pagination>(){}[0]
+
+        final fun component1(): kotlin.collections/List<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.component1|component1(){}[0]
+        final fun component2(): com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.component2|component2(){}[0]
+        final fun copy(kotlin.collections/List<#A1> = ..., com.droidunplugged.kmp_platform_kit.shared.models/PaginationInfo = ...): com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success<#A1> // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.copy|copy(kotlin.collections.List<1:0>;com.droidunplugged.kmp_platform_kit.shared.models.PaginationInfo){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Success.toString|toString(){}[0]
+    }
+
+    final object Idle : com.droidunplugged.kmp_platform_kit.core.paging/PagerState<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Idle|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Idle.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Idle.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.Idle.toString|toString(){}[0]
+    }
+
+    final object LoadingInitial : com.droidunplugged.kmp_platform_kit.core.paging/PagerState<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingInitial|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingInitial.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingInitial.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.paging/PagerState.LoadingInitial.toString|toString(){}[0]
+    }
+}
+
+sealed class <#A: out kotlin/Any?> com.droidunplugged.kmp_platform_kit.core/ApiResult { // com.droidunplugged.kmp_platform_kit.core/ApiResult|null[0]
+    final class <#A1: kotlin/Any?> Success : com.droidunplugged.kmp_platform_kit.core/ApiResult<#A1> { // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success|null[0]
+        constructor <init>(#A1) // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.<init>|<init>(1:0){}[0]
+
+        final val data // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.data|{}data[0]
+            final fun <get-data>(): #A1 // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.data.<get-data>|<get-data>(){}[0]
+
+        final fun component1(): #A1 // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.component1|component1(){}[0]
+        final fun copy(#A1 = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult.Success<#A1> // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/ApiResult.Success.toString|toString(){}[0]
+    }
+
+    final class Failure : com.droidunplugged.kmp_platform_kit.core/ApiResult<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure|null[0]
+        constructor <init>(kotlin/Int, kotlin/String?) // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.<init>|<init>(kotlin.Int;kotlin.String?){}[0]
+
+        final val code // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.code|{}code[0]
+            final fun <get-code>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.code.<get-code>|<get-code>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.message|{}message[0]
+            final fun <get-message>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.component2|component2(){}[0]
+        final fun copy(kotlin/Int = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.copy|copy(kotlin.Int;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/ApiResult.Failure.toString|toString(){}[0]
+    }
+
+    final object Cancelled : com.droidunplugged.kmp_platform_kit.core/ApiResult<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core/ApiResult.Cancelled|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/ApiResult.Cancelled.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/ApiResult.Cancelled.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/ApiResult.Cancelled.toString|toString(){}[0]
+    }
+
+    final object NetworkError : com.droidunplugged.kmp_platform_kit.core/ApiResult<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core/ApiResult.NetworkError|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/ApiResult.NetworkError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/ApiResult.NetworkError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/ApiResult.NetworkError.toString|toString(){}[0]
+    }
+}
+
+sealed class <#A: out kotlin/Any?> com.droidunplugged.kmp_platform_kit.core/SDKState { // com.droidunplugged.kmp_platform_kit.core/SDKState|null[0]
+    final val isError // com.droidunplugged.kmp_platform_kit.core/SDKState.isError|{}isError[0]
+        final fun <get-isError>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.isError.<get-isError>|<get-isError>(){}[0]
+    final val isLoading // com.droidunplugged.kmp_platform_kit.core/SDKState.isLoading|{}isLoading[0]
+        final fun <get-isLoading>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.isLoading.<get-isLoading>|<get-isLoading>(){}[0]
+    final val isSuccess // com.droidunplugged.kmp_platform_kit.core/SDKState.isSuccess|{}isSuccess[0]
+        final fun <get-isSuccess>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.isSuccess.<get-isSuccess>|<get-isSuccess>(){}[0]
+
+    final fun dataOrNull(): #A? // com.droidunplugged.kmp_platform_kit.core/SDKState.dataOrNull|dataOrNull(){}[0]
+    final fun errorMessageOrNull(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core/SDKState.errorMessageOrNull|errorMessageOrNull(){}[0]
+
+    final class <#A1: kotlin/Any?> Success : com.droidunplugged.kmp_platform_kit.core/SDKState<#A1> { // com.droidunplugged.kmp_platform_kit.core/SDKState.Success|null[0]
+        constructor <init>(#A1) // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.<init>|<init>(1:0){}[0]
+
+        final val data // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.data|{}data[0]
+            final fun <get-data>(): #A1 // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.data.<get-data>|<get-data>(){}[0]
+
+        final fun component1(): #A1 // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.component1|component1(){}[0]
+        final fun copy(#A1 = ...): com.droidunplugged.kmp_platform_kit.core/SDKState.Success<#A1> // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.Success.toString|toString(){}[0]
+    }
+
+    final class Error : com.droidunplugged.kmp_platform_kit.core/SDKState<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core/SDKState.Error|null[0]
+        constructor <init>(kotlin/String, kotlin/Boolean = ...) // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.<init>|<init>(kotlin.String;kotlin.Boolean){}[0]
+
+        final val isNetworkError // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.isNetworkError|{}isNetworkError[0]
+            final fun <get-isNetworkError>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.isNetworkError.<get-isNetworkError>|<get-isNetworkError>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.component1|component1(){}[0]
+        final fun component2(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Boolean = ...): com.droidunplugged.kmp_platform_kit.core/SDKState.Error // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.copy|copy(kotlin.String;kotlin.Boolean){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.Error.toString|toString(){}[0]
+    }
+
+    final class ErrorBody : com.droidunplugged.kmp_platform_kit.core/SDKState<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody|null[0]
+        constructor <init>(kotlin/Int, kotlin/String, kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.<init>|<init>(kotlin.Int;kotlin.String;kotlin.String?){}[0]
+
+        final val code // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.code|{}code[0]
+            final fun <get-code>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.code.<get-code>|<get-code>(){}[0]
+        final val errorCode // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.errorCode|{}errorCode[0]
+            final fun <get-errorCode>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.errorCode.<get-errorCode>|<get-errorCode>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.component2|component2(){}[0]
+        final fun component3(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.component3|component3(){}[0]
+        final fun copy(kotlin/Int = ..., kotlin/String = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.copy|copy(kotlin.Int;kotlin.String;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.ErrorBody.toString|toString(){}[0]
+    }
+
+    final object Loading : com.droidunplugged.kmp_platform_kit.core/SDKState<kotlin/Nothing> { // com.droidunplugged.kmp_platform_kit.core/SDKState.Loading|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKState.Loading.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core/SDKState.Loading.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKState.Loading.toString|toString(){}[0]
+    }
+}
+
+sealed class com.droidunplugged.kmp_platform_kit.core.auth/TokenResult { // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult|null[0]
+    final class RefreshFailed : com.droidunplugged.kmp_platform_kit.core.auth/TokenResult { // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed|null[0]
+        constructor <init>(kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.<init>|<init>(kotlin.String?){}[0]
+
+        final val reason // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.reason|{}reason[0]
+            final fun <get-reason>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.reason.<get-reason>|<get-reason>(){}[0]
+
+        final fun component1(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.component1|component1(){}[0]
+        final fun copy(kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.copy|copy(kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.RefreshFailed.toString|toString(){}[0]
+    }
+
+    final class Success : com.droidunplugged.kmp_platform_kit.core.auth/TokenResult { // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success|null[0]
+        constructor <init>(kotlin/String, kotlin.time/Duration) // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.<init>|<init>(kotlin.String;kotlin.time.Duration){}[0]
+
+        final val expiresIn // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.expiresIn|{}expiresIn[0]
+            final fun <get-expiresIn>(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.expiresIn.<get-expiresIn>|<get-expiresIn>(){}[0]
+        final val newToken // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.newToken|{}newToken[0]
+            final fun <get-newToken>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.newToken.<get-newToken>|<get-newToken>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.component1|component1(){}[0]
+        final fun component2(): kotlin.time/Duration // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin.time/Duration = ...): com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.copy|copy(kotlin.String;kotlin.time.Duration){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.Success.toString|toString(){}[0]
+    }
+
+    final object UserLoggedOut : com.droidunplugged.kmp_platform_kit.core.auth/TokenResult { // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.UserLoggedOut|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.UserLoggedOut.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.UserLoggedOut.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.auth/TokenResult.UserLoggedOut.toString|toString(){}[0]
+    }
+}
+
+sealed class com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError|null[0]
+    final val isRetryable // com.droidunplugged.kmp_platform_kit.core.error/SdkError.isRetryable|{}isRetryable[0]
+        final fun <get-isRetryable>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.isRetryable.<get-isRetryable>|<get-isRetryable>(){}[0]
+    final val requiresReLogin // com.droidunplugged.kmp_platform_kit.core.error/SdkError.requiresReLogin|{}requiresReLogin[0]
+        final fun <get-requiresReLogin>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.requiresReLogin.<get-requiresReLogin>|<get-requiresReLogin>(){}[0]
+
+    final class BusinessError : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/Int = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.Int){}[0]
+
+        final val apiCode // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.apiCode|{}apiCode[0]
+            final fun <get-apiCode>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.apiCode.<get-apiCode>|<get-apiCode>(){}[0]
+        final val field // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.field|{}field[0]
+            final fun <get-field>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.field.<get-field>|<get-field>(){}[0]
+        final val httpCode // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.httpCode|{}httpCode[0]
+            final fun <get-httpCode>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.httpCode.<get-httpCode>|<get-httpCode>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.component2|component2(){}[0]
+        final fun component3(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.component3|component3(){}[0]
+        final fun component4(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.component4|component4(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/Int = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.Int){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.BusinessError.toString|toString(){}[0]
+    }
+
+    final class Conflict : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.<init>|<init>(kotlin.String;kotlin.String?){}[0]
+
+        final val conflictingId // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.conflictingId|{}conflictingId[0]
+            final fun <get-conflictingId>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.conflictingId.<get-conflictingId>|<get-conflictingId>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.copy|copy(kotlin.String;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Conflict.toString|toString(){}[0]
+    }
+
+    final class Forbidden : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden|null[0]
+        constructor <init>(kotlin/String = ..., kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.<init>|<init>(kotlin.String;kotlin.String?){}[0]
+
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.message.<get-message>|<get-message>(){}[0]
+        final val requiredPermission // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.requiredPermission|{}requiredPermission[0]
+            final fun <get-requiredPermission>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.requiredPermission.<get-requiredPermission>|<get-requiredPermission>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.copy|copy(kotlin.String;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Forbidden.toString|toString(){}[0]
+    }
+
+    final class NetworkFailure : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure|null[0]
+        constructor <init>(kotlin/String, kotlin/Throwable? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+
+        final val cause // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.cause|{}cause[0]
+            final fun <get-cause>(): kotlin/Throwable? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.cause.<get-cause>|<get-cause>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.component1|component1(){}[0]
+        final fun component2(): kotlin/Throwable? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Throwable? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.copy|copy(kotlin.String;kotlin.Throwable?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NetworkFailure.toString|toString(){}[0]
+    }
+
+    final class NotFound : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound|null[0]
+        constructor <init>(kotlin/String = ..., kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.<init>|<init>(kotlin.String;kotlin.String?){}[0]
+
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.message.<get-message>|<get-message>(){}[0]
+        final val resourceType // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.resourceType|{}resourceType[0]
+            final fun <get-resourceType>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.resourceType.<get-resourceType>|<get-resourceType>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.copy|copy(kotlin.String;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NotFound.toString|toString(){}[0]
+    }
+
+    final class ParseError : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/Throwable? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.<init>|<init>(kotlin.String;kotlin.String;kotlin.Throwable?){}[0]
+
+        final val cause // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.cause|{}cause[0]
+            final fun <get-cause>(): kotlin/Throwable? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.cause.<get-cause>|<get-cause>(){}[0]
+        final val expectedType // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.expectedType|{}expectedType[0]
+            final fun <get-expectedType>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.expectedType.<get-expectedType>|<get-expectedType>(){}[0]
+        final val receivedSnippet // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.receivedSnippet|{}receivedSnippet[0]
+            final fun <get-receivedSnippet>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.receivedSnippet.<get-receivedSnippet>|<get-receivedSnippet>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.component2|component2(){}[0]
+        final fun component3(): kotlin/Throwable? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Throwable? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.copy|copy(kotlin.String;kotlin.String;kotlin.Throwable?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ParseError.toString|toString(){}[0]
+    }
+
+    final class RateLimited : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited|null[0]
+        constructor <init>(kotlin/Long? = ..., kotlin/String = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.<init>|<init>(kotlin.Long?;kotlin.String){}[0]
+
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.message.<get-message>|<get-message>(){}[0]
+        final val retryAfterMs // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.retryAfterMs|{}retryAfterMs[0]
+            final fun <get-retryAfterMs>(): kotlin/Long? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.retryAfterMs.<get-retryAfterMs>|<get-retryAfterMs>(){}[0]
+
+        final fun component1(): kotlin/Long? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.component2|component2(){}[0]
+        final fun copy(kotlin/Long? = ..., kotlin/String = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.copy|copy(kotlin.Long?;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.RateLimited.toString|toString(){}[0]
+    }
+
+    final class ServerError : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError|null[0]
+        constructor <init>(kotlin/Int, kotlin/String? = ..., kotlin/Long? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.<init>|<init>(kotlin.Int;kotlin.String?;kotlin.Long?){}[0]
+
+        final val httpCode // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.httpCode|{}httpCode[0]
+            final fun <get-httpCode>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.httpCode.<get-httpCode>|<get-httpCode>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.message|{}message[0]
+            final fun <get-message>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.message.<get-message>|<get-message>(){}[0]
+        final val retryAfterMs // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.retryAfterMs|{}retryAfterMs[0]
+            final fun <get-retryAfterMs>(): kotlin/Long? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.retryAfterMs.<get-retryAfterMs>|<get-retryAfterMs>(){}[0]
+
+        final fun component1(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.component3|component3(){}[0]
+        final fun copy(kotlin/Int = ..., kotlin/String? = ..., kotlin/Long? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.copy|copy(kotlin.Int;kotlin.String?;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.ServerError.toString|toString(){}[0]
+    }
+
+    final class Timeout : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout|null[0]
+        constructor <init>(kotlin/Long, kotlin/String? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.<init>|<init>(kotlin.Long;kotlin.String?){}[0]
+
+        final val endpoint // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.endpoint|{}endpoint[0]
+            final fun <get-endpoint>(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.endpoint.<get-endpoint>|<get-endpoint>(){}[0]
+        final val timeoutMs // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.timeoutMs|{}timeoutMs[0]
+            final fun <get-timeoutMs>(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.timeoutMs.<get-timeoutMs>|<get-timeoutMs>(){}[0]
+
+        final fun component1(): kotlin/Long // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.component2|component2(){}[0]
+        final fun copy(kotlin/Long = ..., kotlin/String? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.copy|copy(kotlin.Long;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Timeout.toString|toString(){}[0]
+    }
+
+    final class Unauthorized : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized|null[0]
+        constructor <init>(kotlin/String = ..., kotlin/String = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val hint // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.hint|{}hint[0]
+            final fun <get-hint>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.hint.<get-hint>|<get-hint>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unauthorized.toString|toString(){}[0]
+    }
+
+    final class Unexpected : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected|null[0]
+        constructor <init>(kotlin/String, kotlin/Throwable? = ...) // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+
+        final val cause // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.cause|{}cause[0]
+            final fun <get-cause>(): kotlin/Throwable? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.cause.<get-cause>|<get-cause>(){}[0]
+        final val message // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.component1|component1(){}[0]
+        final fun component2(): kotlin/Throwable? // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Throwable? = ...): com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.copy|copy(kotlin.String;kotlin.Throwable?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.Unexpected.toString|toString(){}[0]
+    }
+
+    final object NoConnectivity : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NoConnectivity|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NoConnectivity.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NoConnectivity.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.NoConnectivity.toString|toString(){}[0]
+    }
+
+    final object SdkNotInitialized : com.droidunplugged.kmp_platform_kit.core.error/SdkError { // com.droidunplugged.kmp_platform_kit.core.error/SdkError.SdkNotInitialized|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core.error/SdkError.SdkNotInitialized.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.droidunplugged.kmp_platform_kit.core.error/SdkError.SdkNotInitialized.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.error/SdkError.SdkNotInitialized.toString|toString(){}[0]
+    }
+}
+
+final object com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId { // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId|null[0]
+    final const val DEVELOPMENT // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.DEVELOPMENT|{}DEVELOPMENT[0]
+        final fun <get-DEVELOPMENT>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.DEVELOPMENT.<get-DEVELOPMENT>|<get-DEVELOPMENT>(){}[0]
+    final const val PRODUCTION // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.PRODUCTION|{}PRODUCTION[0]
+        final fun <get-PRODUCTION>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.PRODUCTION.<get-PRODUCTION>|<get-PRODUCTION>(){}[0]
+    final const val STAGING // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.STAGING|{}STAGING[0]
+        final fun <get-STAGING>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.STAGING.<get-STAGING>|<get-STAGING>(){}[0]
+    final const val UAT // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.UAT|{}UAT[0]
+        final fun <get-UAT>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironmentId.UAT.<get-UAT>|<get-UAT>(){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.core/NoOpTelemetry : com.droidunplugged.kmp_platform_kit.core/SDKTelemetry { // com.droidunplugged.kmp_platform_kit.core/NoOpTelemetry|null[0]
+    final fun recordApiCall(kotlin/String, kotlin/Long, kotlin/Int, kotlin/Int) // com.droidunplugged.kmp_platform_kit.core/NoOpTelemetry.recordApiCall|recordApiCall(kotlin.String;kotlin.Long;kotlin.Int;kotlin.Int){}[0]
+    final fun recordError(com.droidunplugged.kmp_platform_kit.core/ErrorType, kotlin/String?, kotlin/String) // com.droidunplugged.kmp_platform_kit.core/NoOpTelemetry.recordError|recordError(com.droidunplugged.kmp_platform_kit.core.ErrorType;kotlin.String?;kotlin.String){}[0]
+    final fun recordSdkEvent(com.droidunplugged.kmp_platform_kit.core/SDKEvent, kotlin/String?) // com.droidunplugged.kmp_platform_kit.core/NoOpTelemetry.recordSdkEvent|recordSdkEvent(com.droidunplugged.kmp_platform_kit.core.SDKEvent;kotlin.String?){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.core/PlatformConfig { // com.droidunplugged.kmp_platform_kit.core/PlatformConfig|null[0]
+    final fun getHeader(kotlin/String): kotlin/String? // com.droidunplugged.kmp_platform_kit.core/PlatformConfig.getHeader|getHeader(kotlin.String){}[0]
+    final fun setDynamicHeaders(kotlin.collections/Map<kotlin/String, kotlin/String>) // com.droidunplugged.kmp_platform_kit.core/PlatformConfig.setDynamicHeaders|setDynamicHeaders(kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+    final fun setEnvHeaders(kotlin.collections/Map<kotlin/String, kotlin/String>) // com.droidunplugged.kmp_platform_kit.core/PlatformConfig.setEnvHeaders|setEnvHeaders(kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+    final fun updateAuthToken(kotlin/String) // com.droidunplugged.kmp_platform_kit.core/PlatformConfig.updateAuthToken|updateAuthToken(kotlin.String){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.core/SDKConfig { // com.droidunplugged.kmp_platform_kit.core/SDKConfig|null[0]
+    final var debugMode // com.droidunplugged.kmp_platform_kit.core/SDKConfig.debugMode|{}debugMode[0]
+        final fun <get-debugMode>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKConfig.debugMode.<get-debugMode>|<get-debugMode>(){}[0]
+    final var sslPins // com.droidunplugged.kmp_platform_kit.core/SDKConfig.sslPins|{}sslPins[0]
+        final fun <get-sslPins>(): com.droidunplugged.kmp_platform_kit.core/SslPinConfig? // com.droidunplugged.kmp_platform_kit.core/SDKConfig.sslPins.<get-sslPins>|<get-sslPins>(){}[0]
+        final fun <set-sslPins>(com.droidunplugged.kmp_platform_kit.core/SslPinConfig?) // com.droidunplugged.kmp_platform_kit.core/SDKConfig.sslPins.<set-sslPins>|<set-sslPins>(com.droidunplugged.kmp_platform_kit.core.SslPinConfig?){}[0]
+
+    final fun disableDebugMode() // com.droidunplugged.kmp_platform_kit.core/SDKConfig.disableDebugMode|disableDebugMode(){}[0]
+    final fun enableDebugMode() // com.droidunplugged.kmp_platform_kit.core/SDKConfig.enableDebugMode|enableDebugMode(){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.core/SDKErrorCode { // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode|null[0]
+    final const val NETWORK_ERROR // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode.NETWORK_ERROR|{}NETWORK_ERROR[0]
+        final fun <get-NETWORK_ERROR>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode.NETWORK_ERROR.<get-NETWORK_ERROR>|<get-NETWORK_ERROR>(){}[0]
+    final const val REQUEST_CANCELLED // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode.REQUEST_CANCELLED|{}REQUEST_CANCELLED[0]
+        final fun <get-REQUEST_CANCELLED>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode.REQUEST_CANCELLED.<get-REQUEST_CANCELLED>|<get-REQUEST_CANCELLED>(){}[0]
+    final const val UNEXPECTED_ERROR // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode.UNEXPECTED_ERROR|{}UNEXPECTED_ERROR[0]
+        final fun <get-UNEXPECTED_ERROR>(): kotlin/String // com.droidunplugged.kmp_platform_kit.core/SDKErrorCode.UNEXPECTED_ERROR.<get-UNEXPECTED_ERROR>|<get-UNEXPECTED_ERROR>(){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.core/SDKInitializer { // com.droidunplugged.kmp_platform_kit.core/SDKInitializer|null[0]
+    final val isInitialized // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.isInitialized|{}isInitialized[0]
+        final fun <get-isInitialized>(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.isInitialized.<get-isInitialized>|<get-isInitialized>(){}[0]
+
+    final fun addInterceptor(com.droidunplugged.kmp_platform_kit.core.interceptor/SdkRequestInterceptor) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.addInterceptor|addInterceptor(com.droidunplugged.kmp_platform_kit.core.interceptor.SdkRequestInterceptor){}[0]
+    final fun clearDeferredProvider() // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.clearDeferredProvider|clearDeferredProvider(){}[0]
+    final fun configure(kotlin/Function0<com.droidunplugged.kmp_platform_kit.core/SDKCredentials>) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.configure|configure(kotlin.Function0<com.droidunplugged.kmp_platform_kit.core.SDKCredentials>){}[0]
+    final fun registerPlugin(com.droidunplugged.kmp_platform_kit.core/SDKPlugin) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.registerPlugin|registerPlugin(com.droidunplugged.kmp_platform_kit.core.SDKPlugin){}[0]
+    final fun removeInterceptor(kotlin/String) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.removeInterceptor|removeInterceptor(kotlin.String){}[0]
+    final fun setCircuitBreakerConfig(com.droidunplugged.kmp_platform_kit.core.circuit/CircuitBreakerConfig) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.setCircuitBreakerConfig|setCircuitBreakerConfig(com.droidunplugged.kmp_platform_kit.core.circuit.CircuitBreakerConfig){}[0]
+    final fun setRemoteConfigProvider(com.droidunplugged.kmp_platform_kit.core.config/SdkRemoteConfigProvider) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.setRemoteConfigProvider|setRemoteConfigProvider(com.droidunplugged.kmp_platform_kit.core.config.SdkRemoteConfigProvider){}[0]
+    final fun setTelemetry(com.droidunplugged.kmp_platform_kit.core/SDKTelemetry) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.setTelemetry|setTelemetry(com.droidunplugged.kmp_platform_kit.core.SDKTelemetry){}[0]
+    final fun setTokenRefreshProvider(com.droidunplugged.kmp_platform_kit.core.auth/TokenRefreshProvider) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.setTokenRefreshProvider|setTokenRefreshProvider(com.droidunplugged.kmp_platform_kit.core.auth.TokenRefreshProvider){}[0]
+    final fun updateAuthToken(kotlin/String) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.updateAuthToken|updateAuthToken(kotlin.String){}[0]
+    final fun updateDynamicHeaders(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.updateDynamicHeaders|updateDynamicHeaders(kotlin.String;kotlin.String){}[0]
+    final suspend fun ensureInitialized() // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.ensureInitialized|ensureInitialized(){}[0]
+    final suspend fun init(com.droidunplugged.kmp_platform_kit.core.config/SdkEnvironment, kotlin/String, kotlin/String, kotlin.time/Duration? = ..., kotlin.collections/List<org.koin.core.module/Module> = ...) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.init|init(com.droidunplugged.kmp_platform_kit.core.config.SdkEnvironment;kotlin.String;kotlin.String;kotlin.time.Duration?;kotlin.collections.List<org.koin.core.module.Module>){}[0]
+    final suspend fun init(kotlin/String, kotlin/String, kotlin/String, kotlin/String, kotlin/String, kotlin.time/Duration? = ..., kotlin.collections/List<org.koin.core.module/Module> = ...) // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.init|init(kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.String;kotlin.time.Duration?;kotlin.collections.List<org.koin.core.module.Module>){}[0]
+    final suspend fun reset() // com.droidunplugged.kmp_platform_kit.core/SDKInitializer.reset|reset(){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.features.catalog.facade/CatalogFacade : com.droidunplugged.kmp_platform_kit.core/BaseFacade { // com.droidunplugged.kmp_platform_kit.features.catalog.facade/CatalogFacade|null[0]
+    final suspend fun getProductDetails(kotlin/String): com.droidunplugged.kmp_platform_kit.core/ApiResult<com.droidunplugged.kmp_platform_kit.features.catalog.models/Product> // com.droidunplugged.kmp_platform_kit.features.catalog.facade/CatalogFacade.getProductDetails|getProductDetails(kotlin.String){}[0]
+    final suspend fun getProducts(): com.droidunplugged.kmp_platform_kit.core/ApiResult<kotlin.collections/List<com.droidunplugged.kmp_platform_kit.features.catalog.models/Product>> // com.droidunplugged.kmp_platform_kit.features.catalog.facade/CatalogFacade.getProducts|getProducts(){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.shared.utils/Constants { // com.droidunplugged.kmp_platform_kit.shared.utils/Constants|null[0]
+    final const val ERROR_CODE_API_STATUS // com.droidunplugged.kmp_platform_kit.shared.utils/Constants.ERROR_CODE_API_STATUS|{}ERROR_CODE_API_STATUS[0]
+        final fun <get-ERROR_CODE_API_STATUS>(): kotlin/Int // com.droidunplugged.kmp_platform_kit.shared.utils/Constants.ERROR_CODE_API_STATUS.<get-ERROR_CODE_API_STATUS>|<get-ERROR_CODE_API_STATUS>(){}[0]
+    final const val NO_RESPONSE_MESSAGE // com.droidunplugged.kmp_platform_kit.shared.utils/Constants.NO_RESPONSE_MESSAGE|{}NO_RESPONSE_MESSAGE[0]
+        final fun <get-NO_RESPONSE_MESSAGE>(): kotlin/String // com.droidunplugged.kmp_platform_kit.shared.utils/Constants.NO_RESPONSE_MESSAGE.<get-NO_RESPONSE_MESSAGE>|<get-NO_RESPONSE_MESSAGE>(){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.shared.utils/NoOpLogger : com.droidunplugged.kmp_platform_kit.shared.utils/Logger { // com.droidunplugged.kmp_platform_kit.shared.utils/NoOpLogger|null[0]
+    final fun d(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.shared.utils/NoOpLogger.d|d(kotlin.String;kotlin.String){}[0]
+    final fun e(kotlin/String, kotlin/String, kotlin/Throwable?) // com.droidunplugged.kmp_platform_kit.shared.utils/NoOpLogger.e|e(kotlin.String;kotlin.String;kotlin.Throwable?){}[0]
+    final fun i(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.shared.utils/NoOpLogger.i|i(kotlin.String;kotlin.String){}[0]
+    final fun w(kotlin/String, kotlin/String) // com.droidunplugged.kmp_platform_kit.shared.utils/NoOpLogger.w|w(kotlin.String;kotlin.String){}[0]
+}
+
+final object com.droidunplugged.kmp_platform_kit.shared.utils/PlatformLogger { // com.droidunplugged.kmp_platform_kit.shared.utils/PlatformLogger|null[0]
+    final fun get(): com.droidunplugged.kmp_platform_kit.shared.utils/Logger // com.droidunplugged.kmp_platform_kit.shared.utils/PlatformLogger.get|get(){}[0]
+    final fun set(com.droidunplugged.kmp_platform_kit.shared.utils/Logger) // com.droidunplugged.kmp_platform_kit.shared.utils/PlatformLogger.set|set(com.droidunplugged.kmp_platform_kit.shared.utils.Logger){}[0]
+}
+
+final val com.droidunplugged.kmp_platform_kit.features.catalog.di/catalogModule // com.droidunplugged.kmp_platform_kit.features.catalog.di/catalogModule|{}catalogModule[0]
+    final fun <get-catalogModule>(): org.koin.core.module/Module // com.droidunplugged.kmp_platform_kit.features.catalog.di/catalogModule.<get-catalogModule>|<get-catalogModule>(){}[0]
+
+final fun <#A: kotlin/Any?> (com.droidunplugged.kmp_platform_kit.core/ApiResult<#A>).com.droidunplugged.kmp_platform_kit.core/toSDKState(): com.droidunplugged.kmp_platform_kit.core/SDKState<#A> // com.droidunplugged.kmp_platform_kit.core/toSDKState|toSDKState@com.droidunplugged.kmp_platform_kit.core.ApiResult<0:0>(){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> com.droidunplugged.kmp_platform_kit.core/sdkStateFlow(kotlin.coroutines/SuspendFunction0<com.droidunplugged.kmp_platform_kit.core/ApiResult<#A>>): kotlinx.coroutines.flow/Flow<com.droidunplugged.kmp_platform_kit.core/SDKState<#A>> // com.droidunplugged.kmp_platform_kit.core/sdkStateFlow|sdkStateFlow(kotlin.coroutines.SuspendFunction0<com.droidunplugged.kmp_platform_kit.core.ApiResult<0:0>>){0§<kotlin.Any?>}[0]
+final fun com.droidunplugged.kmp_platform_kit.core/createClientImpl(): io.ktor.client/HttpClient // com.droidunplugged.kmp_platform_kit.core/createClientImpl|createClientImpl(){}[0]
+final fun com.droidunplugged.kmp_platform_kit.core/isDebugBuild(): kotlin/Boolean // com.droidunplugged.kmp_platform_kit.core/isDebugBuild|isDebugBuild(){}[0]

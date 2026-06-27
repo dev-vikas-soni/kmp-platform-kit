@@ -127,12 +127,13 @@ sealed class PagerState<out T> {
  */
 class SdkPager<T>(
     private val pageSize: Int = 20,
+    coroutineScope: CoroutineScope? = null,
     private val loader: suspend (page: Int, pageSize: Int) -> ApiResult<Page<T>>
 ) {
     private val tag = "SdkPager"
     private val log get() = PlatformLogger.get()
 
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private val scope = coroutineScope ?: CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val mutex = Mutex()
 
     private val _state = MutableStateFlow<PagerState<T>>(PagerState.Idle)

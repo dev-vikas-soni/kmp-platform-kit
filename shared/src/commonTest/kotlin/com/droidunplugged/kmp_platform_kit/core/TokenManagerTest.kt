@@ -1,61 +1,78 @@
 package com.droidunplugged.kmp_platform_kit.core
 
 import com.droidunplugged.kmp_platform_kit.core.auth.TokenManager
+import com.droidunplugged.kmp_platform_kit.core.auth.TokenRefreshProvider
+import com.droidunplugged.kmp_platform_kit.core.auth.TokenResult
 import kotlinx.coroutines.test.runTest
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertNull
+import kotlin.time.Duration.Companion.seconds
 
-/**
- * Tests for [com.droidunplugged.kmp_platform_kit.core.auth.TokenManager].
- *
- * We use a fake [PlatformConfig] by toggling actual header state since
- * [PlatformConfig] is the underlying store that [com.droidunplugged.kmp_platform_kit.core.auth.TokenManager] reads from.
- */
 class TokenManagerTest {
 
-    @BeforeTest
-    fun setUp() {
-        // Clear any header state between tests
-        PlatformConfig.clear()
-    }
+    private class MockTokenRefreshProvider : TokenRefreshProvider {
+        var refreshResult: TokenResult = TokenResult.RefreshFailed("No result set")
+        var callCount = 0
 
-    // ─── getValidToken ─────────────────────────────────────────────────────────
-
-    @Test
-    fun `getValidToken returns null when no token set and no refresh provider`() = runTest {
-        val manager = TokenManager(refreshProvider = null)
-        val token = manager.getValidToken()
-        assertNull(token)
-    }
-
-    @Test
-    fun `getValidToken returns stored token from PlatformConfig`() = runTest {
-        PlatformConfig.setHeader("authorization", "Bearer abc123")
-        val manager = TokenManager(refreshProvider = null)
-        val token = manager.getValidToken()
-        assertEquals("abc123", token)
-    }
-
-    @Test
-    fun `getValidToken invokes refresh provider when no token is present`() = runTest {
-        var providerCalled = false
-        val provider = com.droidunplugged.kmp_platform_kit.core.auth.TokenRefreshProvider {
-            providerCalled = true
-            "refreshed-token"
+        override suspend fun refreshToken(expiredToken: String): TokenResult {
+            callCount++
+            return refreshResult
         }
-        val manager = TokenManager(refreshProvider = provider)
-        val token = manager.getValidToken()
-        assertEquals("refreshed-token", token)
-        assertEquals(true, providerCalled)
     }
 
     @Test
-    fun `notifyUnauthorized clears the stored authorization header`() = runTest {
-        PlatformConfig.setHeader("authorization", "Bearer stale")
-        val manager = TokenManager(refreshProvider = null)
-        manager.notifyUnauthorized()
-        assertNull(PlatformConfig.getHeader("authorization"))
+    fun `onUnauthorized triggers refresh via provider`() = runTest {
+        val provider = MockTokenRefreshProvider()
+        provider.refreshResult = TokenResult.Success("new-token", 60.seconds)
+
+        var refreshedToken: String? = null
+        val manager = TokenManager(
+            provider = provider,
+            onTokenRefreshed = { refreshedToken = it },
+            onUserLoggedOut = {}
+        )
+
+        val result = manager.onUnauthorized()
+
+        assertEquals(true, result)
+        assertEquals(1, provider.callCount)
+        assertEquals("new-token", refreshedToken)
+    }
+
+    @Test
+    fun `onUnauthorized returns false when refresh fails`() = runTest {
+        val provider = MockTokenRefreshProvider()
+        provider.refreshResult = TokenResult.RefreshFailed("Network error")
+
+        val manager = TokenManager(
+            provider = provider,
+            onTokenRefreshed = {},
+            onUserLoggedOut = {}
+        )
+
+        val result = manager.onUnauthorized()
+
+        assertEquals(false, result)
+        // TokenManager retries 3 times by default
+        assertEquals(3, provider.callCount)
+    }
+
+    @Test
+    fun `onUnauthorized triggers logout when provider returns UserLoggedOut`() = runTest {
+        val provider = MockTokenRefreshProvider()
+        provider.refreshResult = TokenResult.UserLoggedOut
+
+        var logoutCalled = false
+        val manager = TokenManager(
+            provider = provider,
+            onTokenRefreshed = {},
+            onUserLoggedOut = { logoutCalled = true }
+        )
+
+        val result = manager.onUnauthorized()
+
+        assertEquals(false, result)
+        assertEquals(1, provider.callCount)
+        assertEquals(true, logoutCalled)
     }
 }

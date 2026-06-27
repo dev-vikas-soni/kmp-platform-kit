@@ -1,14 +1,20 @@
 package com.droidunplugged.kmp_platform_kit.core
 
-import com.droidunplugged.kmp_platform_kit.core.SDKInfo
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.configure
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.credentialProvider
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.ensureInitialized
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.init
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.initMutex
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.initUnderLock
+import com.droidunplugged.kmp_platform_kit.core.SDKInitializer.reset
 import com.droidunplugged.kmp_platform_kit.core.auth.TokenManager
 import com.droidunplugged.kmp_platform_kit.core.auth.TokenRefreshProvider
-import com.droidunplugged.kmp_platform_kit.core.di.FeatureModules
 import com.droidunplugged.kmp_platform_kit.core.circuit.CircuitBreakerConfig
 import com.droidunplugged.kmp_platform_kit.core.config.SdkEnvironment
 import com.droidunplugged.kmp_platform_kit.core.config.SdkRemoteConfigProvider
 import com.droidunplugged.kmp_platform_kit.core.config.SdkRemoteConfigStore
 import com.droidunplugged.kmp_platform_kit.core.di.BASE_URL_QUALIFIER
+import com.droidunplugged.kmp_platform_kit.core.di.FeatureModules
 import com.droidunplugged.kmp_platform_kit.core.di.coreModule
 import com.droidunplugged.kmp_platform_kit.core.interceptor.SdkInterceptorRegistry
 import com.droidunplugged.kmp_platform_kit.core.interceptor.SdkRequestInterceptor
@@ -319,7 +325,10 @@ object SDKInitializer {
         allModules.addAll(SDKPluginRegistry.koinModules)
         allModules.addAll(additionalModules)
 
-        koinApp = koinApplication { modules(allModules) }
+        koinApp = koinApplication {
+            allowOverride(true)
+            modules(allModules)
+        }
 
         // Wire up TokenManager if a provider was registered
         tokenRefreshProvider?.let { provider ->
